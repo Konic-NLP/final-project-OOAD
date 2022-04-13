@@ -85,9 +85,9 @@ USE_I18N = True
 
 USE_L10N = True
 
-LANGUAGE_CODE = 'zh-hans'  # 后台管理改为中文
+LANGUAGE_CODE = 'en-us'  # 后台管理改为中文
 
-TIME_ZONE = 'Asia/Shanghai'  # 时区改为上海
+TIME_ZONE = 'America/Denver'  # 时区改为上海
 
 USE_TZ = False  # 数据库取为国际时间
 
@@ -104,7 +104,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # 指定根目录
 
 # 富文本编辑框的使用配置
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
+    'theme': 'silver',
     'width': 600,
     'height': 400,
 }

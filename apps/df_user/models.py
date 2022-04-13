@@ -7,20 +7,20 @@ from df_goods.models import GoodsInfo
 
 class UserInfo(models.Model):
 
-    uname = models.CharField(max_length=20, verbose_name="用户名", unique=True)
-    upwd = models.CharField(max_length=40, verbose_name="用户密码", blank=False)
-    uemail = models.EmailField(verbose_name="邮箱")
+    uname = models.CharField(max_length=20, verbose_name="user_nmae", unique=True)
+    upwd = models.CharField(max_length=40, verbose_name="user_pwd", blank=False)
+    uemail = models.EmailField(verbose_name="email")
     ushou = models.CharField(max_length=20, default="", verbose_name="收货地址")
-    uaddress = models.CharField(max_length=100, default="", verbose_name="地址")
-    ufullname=models.CharField(max_length=30, default="", verbose_name="name")
-    uyoubian = models.CharField(max_length=6, default="", verbose_name="邮编")
-    uphone = models.CharField(max_length=11, default="", verbose_name="手机号")
-    uanswer=models.CharField(max_length=30, default="", verbose_name="安全答案")
-    uquestion = models.CharField(max_length=40, default="", verbose_name="密保问题")
+    uaddress = models.CharField(max_length=100, default="", verbose_name="address")
+    ufullname=models.CharField(max_length=30, default="", verbose_name="full_name")
+    uyoubian = models.CharField(max_length=6, default="", verbose_name="zip_code")
+    uphone = models.CharField(max_length=11, default="", verbose_name="phone_num")
+    uanswer=models.CharField(max_length=30, default="", verbose_name="security_answer")
+    uquestion = models.CharField(max_length=40, default="", verbose_name="security_question")
     # default,blank是python层面的约束，不影响数据库表结构，修改时不需要迁移 python manage.py makemigrations
 
     class Meta:
-        verbose_name = "用户信息"
+        verbose_name = "User_Info"
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -29,12 +29,12 @@ class UserInfo(models.Model):
 
 class GoodsBrowser(models.Model):
 
-    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE, verbose_name="用户ID")
-    good = models.ForeignKey(GoodsInfo, on_delete=models.CASCADE, verbose_name="商品ID")
-    browser_time = models.DateTimeField(default=datetime.now, verbose_name="浏览时间")
+    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE, verbose_name="user_ID")
+    good = models.ForeignKey(GoodsInfo, on_delete=models.CASCADE, verbose_name="goods_ID")
+    browser_time = models.DateTimeField(default=datetime.now, verbose_name="browse_item")
 
     class Meta:
-        verbose_name = "用户浏览记录"
+        verbose_name = "browser_history"
         verbose_name_plural = verbose_name
 
     def __str__(self):

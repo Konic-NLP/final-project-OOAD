@@ -4,7 +4,7 @@ from .models import UserInfo, GoodsBrowser
 
 
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ["uname", "uemail", "ushou", "uaddress", "uyoubian", "uphone"]
+    list_display = ["uname", "uemail", 'ufullname', "uaddress", "uyoubian", "uphone"]
     list_per_page = 5
     list_filter = ["uname", "uyoubian"]
     search_fields = ["uname", "uyoubian"]
@@ -20,8 +20,8 @@ class GoodsBrowserAdmin(admin.ModelAdmin):
     refresh_times = [3, 5]
 
 
-admin.site.site_header = '天天生鲜后台管理系统'
-admin.site.site_title = '天天生鲜后台管理系统'
+admin.site.site_header = 'Buff Shop backstage management'
+admin.site.site_title = 'Buff Shop backstage management'
 
 admin.site.register(UserInfo, UserInfoAdmin)
 admin.site.register(GoodsBrowser, GoodsBrowserAdmin)
