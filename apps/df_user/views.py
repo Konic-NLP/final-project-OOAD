@@ -10,7 +10,6 @@ from df_order.models import *
 
 
 def register(request):
-
     context = {
         'title': '用户注册',
     }
@@ -23,6 +22,10 @@ def register_handle(request):
     password = request.POST.get('pwd')
     confirm_pwd = request.POST.get('confirm_pwd')
     email = request.POST.get('email')
+    fname = request.POST.get('fname')
+    phone = request.POST.get('pnum')
+    squestion = request.POST.get('squestion')
+    sanswer = request.POST.get('sanswer')
 
     # 判断两次密码一致性
     if password != confirm_pwd:
@@ -33,10 +36,18 @@ def register_handle(request):
     encrypted_pwd = s1.hexdigest()
 
     # 创建对象
-    UserInfo.objects.create(uname=username, upwd=encrypted_pwd, uemail=email)
+    UserInfo.objects.create(
+        uname=username,
+        upwd=encrypted_pwd,
+        uemail=email,
+        ufullname=fname,
+        uphone=phone,
+        uquestion=squestion,
+        uanswer=sanswer,
+    )
     # 注册成功
     context = {
-        'title': '用户登陆',
+        'title': 'Sign up',
         'username': username,
     }
     return render(request, 'df_user/login.html', context)
@@ -64,11 +75,14 @@ def login_handle(request):  # 没有利用ajax提交表单
     uname = request.POST.get('username')
     upwd = request.POST.get('pwd')
     jizhu = request.POST.get('jizhu', 0)
+    # get the request information and retrieve the information from the form
     users = UserInfo.objects.filter(uname=uname)
-    if len(users) == 1:  # 判断用户密码并跳转
+    # use ORM to get the users information
+    if len(users) == 1:  # if the users exits, convert the pwd user input into sha-1 code
         s1 = sha1()
         s1.update(upwd.encode('utf8'))
-        if s1.hexdigest() == users[0].upwd:
+
+        if s1.hexdigest() == users[0].upwd: # if the pwd matched
             url = request.COOKIES.get('url', '/')
             red = HttpResponseRedirect(url)  # 继承与HttpResponse 在跳转的同时 设置一个cookie值
             # 是否勾选记住用户名，设置cookie
@@ -79,7 +93,7 @@ def login_handle(request):  # 没有利用ajax提交表单
             request.session['user_id'] = users[0].id
             request.session['user_name'] = uname
             return red
-        else:
+        else: # if the code doesn't match
             context = {
                 'title': '用户名登陆',
                 'error_name': 0,
@@ -142,6 +156,95 @@ def order(request, index):
         'page_name': 1,
     }
     return render(request, 'df_user/user_center_order.html', context)
+
+
+def reset_handle(request):
+    # question=request.POST.get('security_question')
+    answer = request.POST.get('security_answer')
+    password = request.POST.get('pwd')
+    confirm_password = request.POST.get('confirm_pwd')
+    uname = request.session.get('user_name')
+    users = UserInfo.objects.filter(uname=uname)
+
+    # security_answer="18"
+    security_answer=users[0].uanswer
+    # context={}
+    if password != confirm_password:
+        return redirect('/user/register/')
+    if answer == security_answer:
+        s1 = sha1()
+        s1.update(password.encode('utf8'))
+        encrypted_pwd = s1.hexdigest()
+        users.update(upwd=encrypted_pwd)
+        context={
+            'title': 'the security answer is incorrect',
+            'answer_error': 0
+
+        }
+        return render(request, 'df_user/login.html',context)
+
+    else:
+        context={
+            'title' : 'the security answer is incorrect',
+            'answer_error':1,
+            'security_question':users[0].uquestion,
+                'username': users[0].uname
+        }
+        return render(request, 'df_user/find_password.html',context)
+
+
+def find_password(request):
+    uname = request.POST.get('user_name')
+    users = UserInfo.objects.filter(uname=uname)
+    print(len(users))
+    # if uname=='':
+    #     context={
+    #         'title': 'reset the password',
+    #         'error_name': 0,
+    #         'error_pwd': 0,
+    #         'blank_name': 1,
+    #         'uname':uname
+    #     }
+    #     return render(request, 'df_user/forgetPassword.html', context)
+    if len(users) == 1:  # 判断用户密码并跳转
+
+        url = 'df_user/find_password.html'
+        red = HttpResponseRedirect(url)  # 继承与HttpResponse 在跳转的同时 设置一个cookie值
+        # 是否勾选记住用户名，设置cookie
+        request.session['user_id'] = users[0].id
+        request.session['user_name'] = uname
+        context = {
+            'title': 'reset the password',
+            'username': users[0].uname,
+            # 'security_question':users[0].usecurity_question,
+            'security_question': users[0].uquestion,
+            # 'security_answer':users[0].usecurity_answer,
+
+        }
+        return render(request, 'df_user/find_password.html', context)
+
+    else:
+        context = {
+            'title': '用户名登陆',
+            'error_name': 1,
+            'error_pwd': 0,
+            'blanl_name': 0,
+            'uname': uname,
+        }
+        return render(request, 'df_user/forgetPassword.html', context)
+
+    # return render(request, 'df_user/find_password.html', context)
+
+
+def forget_password(request):
+    uname = request.COOKIES.get('uname', '')
+    context = {
+        'title': '用户登陆',
+        'error_name': 0,
+        'error_pwd': 0,
+        'uname': uname,
+    }
+    return render(request, 'df_user/forgetPassword.html', context)
 
 
 @user_decorator.login

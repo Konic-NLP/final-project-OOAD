@@ -17,4 +17,8 @@ urlpatterns = [
     url(r'^site/$', site, name="site"),
     # url(r'^place_order/$', views.place_order),
     url(r'^logout/$', logout, name="logout"),
+    url(r'^forget_Password/$',forget_password,name="forget_password"),
+    url(r'^forget_password/$',find_password, name="find_password"),
+    url(r'^find_password/$',reset_handle,name="reset_handle")
+
 ]
