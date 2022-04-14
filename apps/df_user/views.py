@@ -11,7 +11,7 @@ from df_order.models import *
 
 def register(request):
     context = {
-        'title': '用户注册',
+        'title': 'Sign up',
     }
     return render(request, 'df_user/register.html', context)
 
@@ -62,7 +62,7 @@ def register_exist(request):
 def login(request):
     uname = request.COOKIES.get('uname', '')
     context = {
-        'title': '用户登陆',
+        'title': 'Login',
         'error_name': 0,
         'error_pwd': 0,
         'uname': uname,
@@ -95,7 +95,7 @@ def login_handle(request):  # 没有利用ajax提交表单
             return red
         else: # if the code doesn't match
             context = {
-                'title': '用户名登陆',
+                'title': 'Login',
                 'error_name': 0,
                 'error_pwd': 1,
                 'uname': uname,
@@ -104,7 +104,7 @@ def login_handle(request):  # 没有利用ajax提交表单
             return render(request, 'df_user/login.html', context)
     else:
         context = {
-            'title': '用户名登陆',
+            'title': 'Login',
             'error_name': 1,
             'error_pwd': 0,
             'uname': uname,
@@ -126,9 +126,9 @@ def info(request):  # 用户中心
     goods_list = []
     if browser_goods:
         goods_list = [browser_good.good for browser_good in browser_goods]  # 从浏览商品记录中取出浏览商品
-        explain = '最近浏览'
+        explain = 'Recently views'
     else:
-        explain = '无最近浏览'
+        explain = 'Relevant views'
 
     context = {
         'title': '用户中心',
@@ -152,7 +152,7 @@ def order(request, index):
         'paginator': paginator,
         'page': page,
         # 'orders_list':orders_list,
-        'title': "用户中心",
+        'title': "User Center",
         'page_name': 1,
     }
     return render(request, 'df_user/user_center_order.html', context)
@@ -225,7 +225,7 @@ def find_password(request):
 
     else:
         context = {
-            'title': '用户名登陆',
+            'title': 'Login',
             'error_name': 1,
             'error_pwd': 0,
             'blanl_name': 0,
@@ -239,7 +239,7 @@ def find_password(request):
 def forget_password(request):
     uname = request.COOKIES.get('uname', '')
     context = {
-        'title': '用户登陆',
+        'title': 'Login',
         'error_name': 0,
         'error_pwd': 0,
         'uname': uname,
@@ -258,7 +258,7 @@ def site(request):
         user.save()
     context = {
         'page_name': 1,
-        'title': '用户中心',
+        'title': 'User Center',
         'user': user,
     }
     return render(request, 'df_user/user_center_site.html', context)
