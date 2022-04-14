@@ -18,22 +18,14 @@
 					<form action="{% url "df_user:site" %}" method="post">
                         {% csrf_token %}
 						<div class="form_group">
-							<label>收件人：</label>
+							<label>new password</label>
 							<input type="text" name="ushou" value="{{ user.ushou }}">
 						</div>
                         <div class="form_group">
-                            <label>手机：</label>
+                            <label>confirm password</label>
                             <input type="text" name="uphone" value="{{ user.uphone }}">
                         </div>
-                        <div class="form_group">
-                            <label>邮编：</label>
-                            <input type="text" name="uyoubian" value="{{ user.uyoubian }}">
-                        </div>
-                        <div class="form_group form_group2">
-                            <label>详细地址：</label>
-                            <textarea class="site_area" name="uaddress" >{{ user.uaddress }}</textarea>
-                        </div>
-						<input type="submit" name="" value="修改地址" class="info_submit">
+						<input type="submit" name="" value="reset the password" class="info_submit">
 					</form>
 				</div>
 		</div>
