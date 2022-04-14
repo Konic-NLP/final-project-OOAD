@@ -5,23 +5,49 @@
 
 	<div class="main_con clearfix">
 		<div class="left_menu_con clearfix">
-			<h3>用户中心</h3>
+			<h3>User Center</h3>
 			<ul>
-				<li><a href="{% url "df_user:info" %}" class="active">· 个人信息</a></li>
-				<li><a href="/user/order/1">· 全部订单</a></li>
-				<li><a href="{% url "df_user:site" %}">· 收货地址</a></li>
+				<li><a href="{% url "df_user:info" %}" class="active">· Personal Information</a></li>
+				<li><a href="/user/order/1">· Order History</a></li>
+				<li><a href="{% url "df_user:site" %}">· Change the Password</a></li>
 			</ul>
 		</div>
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
-				<h3 class="common_title2">基本信息</h3>
+				<h3 class="common_title2">Basic Information</h3>
+						 <form action="{}" id='reg_form' method="post">
+                    {% csrf_token %}
+
 						<ul class="user_info_list">
-							<li><span>用户名：</span>{{ user_name }}</li>
-							<li><span>联系方式：</span>{{ user_phone }}</li>
-							<li><span>联系地址：</span>{{ user_address }}</li>
-						</ul>
+							<li><span>username：</span>{{ user_name }}</li>
+
+                            	<li><span>full name</span>
+
+                                 <input type="text" name="fullname" class="contact" value="{{ user_full_Name}}" id="email">
+                                </li>
+
+                            <li>
+{#                                <label>email_</label>#}
+                                <label>email
+                                    <input type="text" name="email" class="nam" value="{{user_email}}" id="email">
+                                </label>
+                            </li>
+							<li><span>phone</span>
+                                <input type="text" name="phone" class="contact" value="{{user_phone}}" id="email">
+
+                            </li>
+							<li><span>address</span>
+
+                                 <input type="text" name="address" class="contact" value="{{ user_address }}" id="email">
+                                </li>
+
+
+                    			<li class="reg_sub">
+						<input type="submit" value="Save changes">
+					        </li>
+
 				</div>
-            <h3 class="common_title2">{{ explain }}</h3>
+            <h3 class="common_title2">View History</h3>
             <div class="has_view_list">
                 <ul class="goods_type_list clearfix">
                     {%  for good in goods_list %}
@@ -31,7 +57,7 @@
                         <div class="operate">
                             <span class="prize">￥{{ good.gprice }}</span>
                             <span class="unit">{{ good.gprice }}/{{ good.gunit }}</span>
-                            <a href="/cart/add{{ good.id }}_1/" class="add_goods" title="加入购物车"></a>
+                            <a href="/cart/add{{ good.id }}_1/" class="add_goods" title="add to cart"></a>
                         </div>
                     </li>
                     {% endfor %}

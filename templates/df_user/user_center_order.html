@@ -4,15 +4,15 @@
 
 	<div class="main_con clearfix">
 		<div class="left_menu_con clearfix">
-			<h3>用户中心</h3>
+			<h3>User Center</h3>
 			<ul>
-				<li><a href="{% url "df_user:info" %}">· 个人信息</a></li>
-				<li><a href="{% url "df_user:order" 1 %}" class="active">· 全部订单</a></li>
-				<li><a href="{% url "df_user:site" %}">· 收货地址</a></li>
+				<li><a href="{% url "df_user:info" %}">· Personal Information</a></li>
+				<li><a href="{% url "df_user:order" 1 %}" class="active">· Order History</a></li>
+				<li><a href="{% url "df_user:site" %}">· Change the Password</a></li>
 			</ul>
 		</div>
 		<div class="right_content clearfix">
-				<h3 class="common_title2">全部订单</h3>
+				<h3 class="common_title2">Order History</h3>
                 {% for orderinfo in page %}
 				<ul class="order_list_th w978 clearfix">
 					<li class="col01">{{ orderinfo.odate|date }}</li>
