@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block center_body %}
+
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>User Center</h3>
+			<ul>
+				<li><a href="{% url "df_user:info" %}" class="active">· Personal Information</a></li>
+				<li><a href="/user/order/1">· Order History</a></li>
+				<li><a href="{% url "df_user:site" %}">· Change the Password</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<div class="info_con clearfix">
+				<h3 class="common_title2">Basic Information</h3>
+						<ul class="user_info_list">
+							<li>
+                                <label>Name：</label>
+                                <input type="text" name="user_name" id="user_name">
+                            </li>
+                            <li>
+                                <label>Email：</label>
+                                <input type="text" name="email" id="email">
+                            </li>
+                            <li>
+                                <label>Phone：</label>
+                                <input type="text" name="user_name" id="user_name">
+                            </li>
+                            <li class="reg_sub">
+						        <input type="submit" value="Update Change">
+					        </li>
+						</ul>
+				</div>
+            <h3 class="common_title2">View History</h3>
+            <div class="has_view_list">
+                <ul class="goods_type_list clearfix">
+                    {%  for good in goods_list %}
+                    <li>
+                        <a href="/{{ good.id }}/"><img src="{{ MEDIA_URL }}{{ good.gpic }}"></a>
+                        <h4><a href="/{{ good.id }}/">{{ good.gtitle }}</a></h4>
+                        <div class="operate">
+                            <span class="prize">￥{{ good.gprice }}</span>
+                            <span class="unit">{{ good.gprice }}/{{ good.gunit }}</span>
+                            <a href="/cart/add{{ good.id }}_1/" class="add_goods" title="add to cart"></a>
+                        </div>
+                    </li>
+                    {% endfor %}
+			</ul>
+            </div>
+		</div>
+	</div>
+{% endblock center_body %}
