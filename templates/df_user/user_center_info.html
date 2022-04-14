@@ -15,23 +15,37 @@
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
 				<h3 class="common_title2">Basic Information</h3>
+						 <form action="{}" id='reg_form' method="post">
+                    {% csrf_token %}
+
 						<ul class="user_info_list">
-							<li>
-                                <label>Name：</label>
-                                <input type="text" name="user_name" id="user_name">
-                            </li>
+							<li><span>username：</span>{{ user_name }}</li>
+
+                            	<li><span>full name</span>
+
+                                 <input type="text" name="fullname" class="contact" value="{{ user_full_Name}}" id="email">
+                                </li>
+
                             <li>
-                                <label>Email：</label>
-                                <input type="text" name="email" id="email">
+{#                                <label>email_</label>#}
+                                <label>email
+                                    <input type="text" name="email" class="nam" value="{{user_email}}" id="email">
+                                </label>
                             </li>
-                            <li>
-                                <label>Phone：</label>
-                                <input type="text" name="user_name" id="user_name">
+							<li><span>phone</span>
+                                <input type="text" name="phone" class="contact" value="{{user_phone}}" id="email">
+
                             </li>
-                            <li class="reg_sub">
-						        <input type="submit" value="Update Change">
+							<li><span>address</span>
+
+                                 <input type="text" name="address" class="contact" value="{{ user_address }}" id="email">
+                                </li>
+
+
+                    			<li class="reg_sub">
+						<input type="submit" value="Save changes">
 					        </li>
-						</ul>
+
 				</div>
             <h3 class="common_title2">View History</h3>
             <div class="has_view_list">
