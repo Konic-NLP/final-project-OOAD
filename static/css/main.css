@@ -42,7 +42,7 @@ html,body{height:100%}
 .search_bar{width:1200px;height:150px;margin:0 auto; background-color: black}
 .logo{width:150px;height:59px;margin:29px 0 0 17px;}
 
-.search_con{width:616px;height:38px;border:1px solid black;margin:60px 0 0 190px;background:url(../images/icons.png) 10px -338px no-repeat;}
+.search_con{width:616px;height:39px;border:1px solid black;margin:60px 0 0 190px;background:url(../images/icons.png) 10px -338px no-repeat;}
 .search_con .input_text{width:470px;height:34px;border:0px;margin:2px 0 0 36px;outline:none;font-size:12px;color:#737272;font-family:'Microsoft Yahei'}
 
 .search_con .input_btn{
@@ -54,7 +54,7 @@ html,body{height:100%}
 }
 
 .guest_cart .cart_name{
-	width:158px;height:38px;line-height:38px;border:1px solid #dddddd;display:block;background:url(../images/icons.png) 13px -300px no-repeat;font-size:14px;color:#D0B96B;text-indent:56px;
+	width:158px;height:39px;line-height:38px;border:1px solid #dddddd;display:block;background:url(../images/cart_icon.png) 10px 3px no-repeat; font-size:14px;color:#D0B96B;text-indent:56px
 }
 
 .guest_cart .goods_count{
@@ -146,11 +146,12 @@ html,body{height:100%}
 /* 页面底部样式 */
 .footer{
 	border-top:0px solid #42ad46;
-	margin:0px 0;
+	margin:30px 0;
 }
 
 .foot_link{text-align:center;margin-top:30px;}
 .foot_link a,.foot_link span{color:#4e4e4e;}
+.foot_link a:hover{color:#ff8800}
 .foot_link span{padding:0 10px}
 .footer p{text-align:center; margin-top:10px;}
 
@@ -289,7 +290,7 @@ html,body{height:100%}
 .login_title a{width:100px;height:20px;display:block;font-size:16px;color:black;text-indent:26px;background:url(../images/login_logo.png) left 5px no-repeat;float:left;margin:20px 0 0 36px}
 
 .form_input{width:308px;height:250px;margin:20px auto;position:relative;}
-.name_input,.pass_input{width:306px;height:36px;border:1px solid #e0e0e0;background:url() 280px -41px no-repeat #f8f8f8;outline:none;font-size:14px;text-indent:10px;position: absolute;left:0;top:0}
+.name_input,.pass_input{width:306px;height:36px;border:1px solid #e0e0e0;background:url(../images/icons02.png) 280px -41px no-repeat #f8f8f8;outline:none;font-size:14px;text-indent:10px;position: absolute;left:0;top:0}
 .pass_input{top:65px;background-position:280px -95px;}
 
 .user_error,.pwd_error{color:#f00;position:absolute;left:0;top:43px;display:none}
@@ -313,7 +314,7 @@ html,body{height:100%}
 	/*background:url(../images/interval_line.png) 300px top no-repeat;*/
 }
 
-.l_con{width:300px;hight:100px}
+.l_con{width:300px;}
 .reg_logo{width:200px;height:76px;float:right;margin-right:30px;}
 .reg_slogan{width:300px;height:30px;float:right;text-align:right;font-size:24px;color:#69a81e;margin:20px 30px 0 0;}
 .reg_banner{width:251px;height:329px;background:url(../images/register_banner.png) no-repeat;float:right; margin:20px 10px 0 0;opacity:0.5}
@@ -325,8 +326,8 @@ html,body{height:100%}
 .reg_title a{float:right;height:20px;line-height:20px;font-size:16px;color:black;padding-right:20px;background:url(../images/login_logo.png) 42px 4px no-repeat; background-size:15px 15px; margin-top:15px}
 
 .reg_form{width:360px;margin:30px 0 0 30px;float:left;position:relative;}
-.reg_form li{height:70px;weight:320px;}
-.reg_form li label{width:70px;height:40px;line-height:40px;float:left;font-size:14px;color:#a8a8a8;}
+.reg_form li{height:70px;}
+.reg_form li label{width:70px;height:40px;line-height:40px;float:left;font-size:14px;color:#a8a8a8}
 .reg_form li input{width:288px;height:38px;border:1px solid #e0e0e0;float:left;outline:none;text-indent:10px;background-color:#f8f8f8}
 .reg_form li.agreement input{width:15px;height:15px;float:left;margin-top:13px}
 .reg_form li.agreement label{width:300px;float:left;margin-left:10px;}
@@ -541,7 +542,6 @@ html,body{height:100%}
 	background-color:#f9f9f9;
 	margin:10px 0 15px;
 	padding:10px 0;
-	height:90px;
 }
 
 .user_info_list li{

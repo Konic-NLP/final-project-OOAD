@@ -4,7 +4,7 @@
 
     <div class="header_con">
 		<div class="header">
-			<div class="welcome fl">欢迎来到天天生鲜!</div>
+			<div class="welcome fl">Be prepared. Be successful. Be spirited.</div>
 			<div class="fr">
 {#                判断是否已经登录#}
                 {% if request.session.user_name|default:'' != '' %}
@@ -12,24 +12,20 @@
 {#                    也就是说当用户为已登陆状态时则显示用户名#}
 
 {#                    class="login_info fl"#}
-				<div class="login_btn fl">欢迎您：<em>{{ request.session.user_name }}</em>
+				<div class="login_btn fl">My account: <em>{{ request.session.user_name }}</em>
                     <span>|</span>
-                    <em><a href="{% url "df_user:logout" %}">退出</a></em>
+                    <em><a href="{% url "df_user:logout" %}">log out</a></em>
 				</div>
                 {% else %}
 				<div class="login_btn fl">
-					<a href="{% url "df_user:login" %}">登录</a>
+					<a href="{% url "df_user:login" %}">Login</a>
 					<span>|</span>
-					<a href="{% url "df_user:register" %}">注册</a>
+					<a href="{% url "df_user:register" %}">Signup</a>
 				</div>
                 {% endif %}
 				<div class="user_link fl">
 					<span>|</span>
-					<a href="{% url "df_user:info" %}">用户中心</a>
-					<span>|</span>
-					<a href="{% url "df_cart:cart" %}">我的购物车</a>
-					<span>|</span>
-					<a href="{% url "df_user:order" 1 %}">我的订单</a>
+					<a href="{% url "df_user:info" %}">My account</a>
 				</div>
 			</div>
 		</div>
@@ -37,10 +33,10 @@
 
 
     <div class="search_bar clearfix">
-		<a href="/" class="logo fl"><img src="/static/images/logo.png"></a>
-        {% if page_name == 1 %}
+		<a href="/" class="logo fl"><img style="max-width:100%;overflow:hidden;" img src="/static/images/logo.png"></a>
+        {% comment %}{% if page_name == 1 %}
             <div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;{{ title }}</div>
-        {% endif %}
+        {% endif %}{% endcomment %}
 		<div class="search_con fl">
              <script>
                 $(function () {
@@ -56,13 +52,13 @@
                 })
 
             </script>
-			<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
+			<input type="text" class="input_text fl" name="q" placeholder="Search...">
+			<input type="button" class="input_btn fr" name="" value="Search">
 		</div>
 
         {% if guest_cart == 1 %}
             <div class="guest_cart fr">
-                <a href="{% url "df_cart:cart" %}" class="cart_name fl">我的购物车</a>
+                <a href="{% url "df_cart:cart" %}" class="cart_name fl">Cart</a>
                 <div class="goods_count fl" id="show_count">{{ cart_num }}</div>
             </div>
         {% endif %}
