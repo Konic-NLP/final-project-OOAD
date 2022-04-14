@@ -2,34 +2,43 @@
 
 {% block center_body %}
 
-    <div class="navbar_con">
-		<div class="navbar clearfix">
-			<div class="subnav_con fl">
-				<h1>Categories</h1>
-				<span></span>
-				<ul class="subnav">
-					<li><a href="/list1_1_1" class="fruit">新鲜水果</a></li>
-					<li><a href="/list2_1_1" class="seafood">海鲜水产</a></li>
-					<li><a href="#" class="meet">猪牛羊肉</a></li>
-					<li><a href="#" class="egg">禽类蛋品</a></li>
-					<li><a href="#" class="vegetables">新鲜蔬菜</a></li>
-					<li><a href="#" class="ice">速冻食品</a></li>
+
+    <nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#">Home</a>
+	</div>
+	<div>
+		<ul class="nav navbar-nav">
+            {#<li class="active"><a href="#">Food</a></li>#}
+			<li><a href="#">FOOD</a></li>
+            <li><a href="#">APPREAL</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Electronic
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">jmeter</a></li>
+					<li><a href="#">EJB</a></li>
+					<li><a href="#">Jasper Report</a></li>
+					<li class="divider"></li>
+					<li><a href="#">分离的链接</a></li>
+					<li class="divider"></li>
+					<li><a href="#">另一个分离的链接</a></li>
 				</ul>
-			</div>
-			<ul class="navlist fl">
-				<li><a href="{% url "df_goods:index" %}">首页</a></li>
-				<li class="interval">|</li>
-				<li><a href="">手机生鲜</a></li>
-				<li class="interval">|</li>
-				<li><a href="">抽奖</a></li>
-			</ul>
-		</div>
+			</li>
+		</ul>
+	</div>
+	</div>
+    </nav>
 	</div>
 
+
 	<div class="breadcrumb">
-		全部分类 > {{ title }}
+		All Category > {{ title }}
 		{% if id|default:' ' != ' ' %}
-        > 商品详情
+        > Product Detail
 		{% endif %}
 	</div>
 
