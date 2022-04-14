@@ -73,9 +73,6 @@ html,body{height:100%}
 
 .navbar .subnav_con:hover span{transform:rotateZ(180deg)}
 
-.navbar .subnav_con .subnav{position:absolute;left:0;top:40px;display:none;border-top:2px solid  #39a93e;}
-.navbar .subnav_con:hover .subnav{display:block;}
-
 
 .navlist{margin-left:34px;}
 .navlist li{height:40px;float:left;line-height:40px;}
