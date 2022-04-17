@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
-{% block center_body %}
 
+
+
+{% block center_body %}
+    <script type="text/javascript">
+if({{ success }}==1){
+
+    alert('modify successfully')
+}
+
+
+</script>
 
 	<div class="main_con clearfix">
 		<div class="left_menu_con clearfix">
@@ -15,7 +25,7 @@
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
 				<h3 class="common_title2">Basic Information</h3>
-						 <form action="{}" id='reg_form' method="post">
+						 <form action="{% url "df_user:info_reset" %}" id='reg_form' method="post">
                     {% csrf_token %}
 
 						<ul class="user_info_list">
@@ -23,27 +33,27 @@
 
                             	<li><span>full name</span>
 
-                                 <input type="text" name="fullname" class="contact" value="{{ user_full_Name}}" id="email">
+                                 <input type="text" name="fullname" class="full_name" value="{{ user_full_name}}" id="user_fullname">
                                 </li>
 
                             <li>
 {#                                <label>email_</label>#}
                                 <label>email
-                                    <input type="text" name="email" class="nam" value="{{user_email}}" id="email">
+                                    <input type="text" name="email" class="email" value="{{user_email}}" id="email">
                                 </label>
                             </li>
 							<li><span>phone</span>
                                 <input type="text" name="phone" class="contact" value="{{user_phone}}" id="email">
 
                             </li>
-							<li><span>address</span>
-
-                                 <input type="text" name="address" class="contact" value="{{ user_address }}" id="email">
-                                </li>
+{#							<li><span>address</span>#}
+{##}
+{#                                 <input type="text" name="address" class="contact" value="{{ user_address }}" id="address">#}
+{#                                </li>#}
 
 
                     			<li class="reg_sub">
-						<input type="submit" value="Save changes">
+						        <input type="submit" value="Save changes" onclick="myFunction()">
 					        </li>
 
 				</div>
