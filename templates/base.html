@@ -12,7 +12,7 @@
 {#                    也就是说当用户为已登陆状态时则显示用户名#}
 
 {#                    class="login_info fl"#}
-				<div class="login_btn fl">My account: <em>{{ request.session.user_name }}</em>
+				<div class="login_btn fl">Welcome: <em>{{ request.session.user_name }}</em>
                     <span>|</span>
                     <em><a href="{% url "df_user:logout" %}">log out</a></em>
 				</div>
