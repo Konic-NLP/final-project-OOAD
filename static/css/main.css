@@ -105,7 +105,7 @@ html,body{height:100%}
 
 /* 商品列表样式 */
 
-.list_model{width:1200px;height:340px;margin:15px auto 0;}
+.list_model{width:1200px;height:640px;margin:15px auto 0;}
 .list_title{height:auto;border-bottom:2px solid black}
 .list_title h3{height:40px;line-height:40px;font-size:16px;color: black;font-weight:bold;}
 .list_title .subtitle{height:20px;line-height:20px;margin-top:15px;}
@@ -114,7 +114,7 @@ html,body{height:100%}
 .list_title .subtitle a:hover,.goods_more:hover{color:#ff8800}
 .goods_more{height:20px;margin-top:40px;color:#666}
 
-.goods_con{height:300px;}
+.goods_con{height:500px;}
 .goods_banner{width:200px;height:300px;}
 .goods_banner img{width:200px;height:300px;}
 

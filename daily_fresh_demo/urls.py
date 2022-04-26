@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.views.static import serve  # 上传文件处理函数
 
+from apps import df_goods, df_user, df_cart, df_order
 from .settings import MEDIA_ROOT
 
 

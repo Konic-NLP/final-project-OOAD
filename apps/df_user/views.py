@@ -6,7 +6,8 @@ from hashlib import sha1
 
 from .models import GoodsBrowser
 from . import user_decorator
-from df_order.models import *
+from .models import UserInfo
+from df_order.models import OrderInfo
 
 
 def register(request):
@@ -118,6 +119,33 @@ def logout(request):  # 用户登出
     return redirect(reverse("df_goods:index"))
 
 
+# @user_decorator.login
+# def info(request):  # 用户中心
+#     username = request.session.get('user_name')
+#     user = UserInfo.objects.filter(uname=username).first()
+#     browser_goods = GoodsBrowser.objects.filter(user=user).order_by("-browser_time")
+#     goods_list = []
+#     if browser_goods:
+#         goods_list = [browser_good.good for browser_good in browser_goods]  # 从浏览商品记录中取出浏览商品
+#         explain = 'Recently views'
+#     else:
+#         explain = 'Relevant views'
+#
+#     context = {
+#         'title': '用户中心',
+#         'page_name': 1,
+#         'user_phone': user.uphone,
+#         'user_address': user.uaddress,
+#         'user_name': username,
+#         'goods_list': goods_list,
+#         'explain': explain,
+#     }
+#     return render(request, 'df_user/user_center_info.html', context)
+
+
+
+
+
 @user_decorator.login
 def info(request):  # 用户中心
     username = request.session.get('user_name')
@@ -133,15 +161,53 @@ def info(request):  # 用户中心
     context = {
         'title': '用户中心',
         'page_name': 1,
+        'user_full_name':user.ufullname,
+        'user_email': user.uemail,
         'user_phone': user.uphone,
-        'user_address': user.uaddress,
         'user_name': username,
+        'user_address': user.uaddress,
         'goods_list': goods_list,
         'explain': explain,
     }
     return render(request, 'df_user/user_center_info.html', context)
 
+@user_decorator.login
+def info_reset(request):
+    user_name=request.session.get('user_name')
+    user = UserInfo.objects.filter(uname=user_name)
+    user_full_name=request.POST.get('fullname')
+    user_email=request.POST.get('email')
+    user_phone=request.POST.get('phone')
+    browser_goods = GoodsBrowser.objects.filter(user__in=user).order_by("-browser_time")
+    goods_list = []
+    if browser_goods:
+        goods_list = [browser_good.good for browser_good in browser_goods]  # 从浏览商品记录中取出浏览商品
+        explain = 'Recently views'
+    else:
+        explain = 'Relevant views'
+    user.update(
+        ufullname=user_full_name,
+        # upwd=encrypted_pwd,
+        uemail=user_email,
+        uphone=user_phone,
+        # uaddress=user_address,
+    )
+    user = UserInfo.objects.filter(uname=user_name).first()
+    context={
+        'title': 'change the information',
+        'success': 1,
+        'script': 'alert',
+        'page_name': 1,
+        'user_full_name': user.ufullname,
+        'user_email': user.uemail,
+        'user_phone': user.uphone,
+        'user_name': user_name,
 
+        'goods_list': goods_list,
+        'explain': explain,
+
+    }
+    return render(request, 'df_user/user_center_info.html', context)
 @user_decorator.login
 def order(request, index):
     user_id = request.session['user_id']
@@ -249,16 +315,31 @@ def forget_password(request):
 
 @user_decorator.login
 def site(request):
+    return render(request,'df_user/user_center_site.html')
+
+def site_handle(request):
     user = UserInfo.objects.get(id=request.session['user_id'])
     if request.method == "POST":
-        user.ushou = request.POST.get('ushou')
-        user.uaddress = request.POST.get('uaddress')
-        user.uyoubian = request.POST.get('uyoubian')
-        user.uphone = request.POST.get('uphone')
-        user.save()
-    context = {
-        'page_name': 1,
-        'title': 'User Center',
-        'user': user,
-    }
-    return render(request, 'df_user/user_center_site.html', context)
+        pwd = request.POST.get('pwd')
+        # user.uaddress = request.POST.get('uaddress')
+        # user.uyoubian = request.POST.get('uyoubian')
+        # user.uphone = request.POST.get('uphone')
+        confirm_pwd=request.POST.get('confirm_pwd')
+        if pwd==confirm_pwd:
+
+            # 密码加密
+            s1 = sha1()
+            s1.update(pwd.encode('utf8'))
+            user.upwd = s1.hexdigest()
+
+            user.save()
+            return render(request, 'df_user/user_center_site.html', {'success':1})
+        else:
+            return redirect('df_user/user_center_site.html')
+    return render(request, 'df_user/user_center_site.html', {'success':1})
+    # context = {
+    #     'page_name': 1,
+    #     'title': 'User Center',
+    #     'user': user,
+    # }
+

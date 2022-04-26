@@ -10,7 +10,9 @@ from df_user.models import GoodsBrowser
 def index(request):
     # 查询各个分类的最新4条，最热4条数据
     typelist = TypeInfo.objects.all()
+    goodsinfo=GoodsInfo.objects.all()
     #  _set 连表操作
+    type=goodsinfo.order_by('-id')[:10]
     type0 = typelist[0].goodsinfo_set.order_by('-id')[0:4]  # 按照上传顺序
     type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:4]  # 按照点击量
     type1 = typelist[1].goodsinfo_set.order_by('-id')[0:4]
@@ -35,7 +37,8 @@ def index(request):
         'title': '首页',
         'cart_num': cart_num,
         'guest_cart': 1,
-        'type0': type0, 'type01': type01,
+
+        'type0': type, 'type01': type01,
         'type1': type1, 'type11': type11,
         'type2': type2, 'type21': type21,
         'type3': type3, 'type31': type31,

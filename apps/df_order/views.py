@@ -14,7 +14,9 @@ from df_user import user_decorator
 @user_decorator.login
 def order(request):
     uid = request.session['user_id']
-    user = UserInfo.objects.get(id=uid)
+    # user = UserInfo.objects.get(id=uid)
+    latest=OrderInfo.objects.filter(user_id=uid)
+    receiver=latest.order_by('-oid')[0]
     cart_ids = request.GET.getlist('cart_id')
     carts = []
     total_price = 0
@@ -29,7 +31,7 @@ def order(request):
     context = {
         'title': '提交订单',
         'page_name': 1,
-        'user': user,
+        'user': receiver,
         'carts': carts,
         'total_price': float('%0.2f' % total_price),
         'trans_cost': trans_cost,
