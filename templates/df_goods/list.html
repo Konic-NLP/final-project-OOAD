@@ -5,13 +5,13 @@
 	<div class="main_wrap clearfix">
 		<div class="l_wrap fl clearfix">
 			<div class="new_goods">
-				<h3>新品推荐</h3>
+				<h3>New Arrival</h3>
 				<ul>
 				
 {#					<li>#}
 {#						<a href="#"><img src="/static/images/goods/goods001.jpg"></a>#}
 {#						<h4><a href="#">进口柠檬</a></h4>#}
-{#						<div class="prize">￥3.90</div>#}
+{#						<div class="prize">$3.90</div>#}
 {#					</li>#}
 
                     {% for goods in news %}
@@ -19,7 +19,7 @@
                         <li>
                             <a href="/{{ goods.id }}"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
     						<h4><a href="/{{ goods.id }}">{{ goods.gtitle }}</a></h4>
-    						<div class="prize">￥{{ goods.gprice }}</div>
+    						<div class="prize">${{ goods.gprice }}</div>
                         </li>
                     {% endfor %}
 				</ul>
@@ -57,7 +57,7 @@
 {#					<a href="detail.html"><img src="/static/images/goods/goods003.jpg"></a>#}
 {#					<h4><a href="detail.html">大兴大棚草莓</a></h4>#}
 {#					<div class="operate">#}
-{#						<span class="prize">￥16.80</span>#}
+{#						<span class="prize">$16.80</span>#}
 {#						<span class="unit">16.80/500g</span>#}
 {#						<a href="#" class="add_goods" title="加入购物车"></a>#}
 {#					</div>#}
@@ -68,7 +68,7 @@
 					<a href="/{{ g.id }}/"><img src="{{ MEDIA_URL }}{{ g.gpic }}"></a>
 					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
 					<div class="operate">
-						<span class="prize">￥{{ g.gprice }}</span>
+						<span class="prize">${{ g.gprice }}</span>
 						<span class="unit">{{ g.gunit }}</span>
 						<a href="/cart/add{{ g.id }}_1/" class="add_goods" title="加入购物车"></a>
 {#						<a href="javasript:;/" class="add_goods" title="加入购物车"></a>#}

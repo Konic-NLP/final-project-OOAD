@@ -46,7 +46,7 @@
          price = parseFloat($('#gprice').text());
          total = num*price;
          $('.num_show').val(num);
-         $('#gtotal').text(total.toFixed(2)+'元');
+         $('#gtotal').text(total.toFixed(2)+'$');
 
 {#             $('add_cart').attr('href', '/cart/add'+$('gid').val())#}
         });
@@ -54,6 +54,9 @@
     </script>
 
 {% endblock head %}
+
+
+
 
 {% block center_content %}
 	<div class="goods_detail_con clearfix">
@@ -63,29 +66,28 @@
 			<h3>{{ goods.gtitle }}</h3>
 			<p>{{ goods.gjianjie }}</p>
 			<div class="prize_bar">
-				<span class="show_pirze">¥<em id="gprice">{{ goods.gprice }}</em></span>
-				<span class="show_unit">单  位：{{ goods.gunit }}</span>
-				<span class="show_unit">库  存：<span class="goods_kucun">{{ goods.gkucun }}</span></span>
+				<span class="show_pirze">$<em id="gprice">{{ goods.gprice }}</em></span>
+				<span class="show_unit">In stock：<span class="goods_kucun">{{ goods.gkucun }}</span></span>
 			</div>
 			<div class="goods_num clearfix">
-				<div class="num_name fl">数 量：</div>
+				<div class="num_name fl">QTY：</div>
 				<div class="num_add fl">
 					<input type="text" class="num_show fl" value="1">
 					<a href="javascript:plus();" class="add fr">+</a>
 					<a href="javascript:minus();" class="minus fr">-</a>
 				</div>
 			</div>
-			<div class="total">总价：<em id="gtotal">{{ goods.gprice }}元</em></div>
+			<div class="total">Total Price：$ <em id="gtotal">{{ goods.gprice }}</em></div>
 			<div class="operate_btn">
                 {% if request.session.user_name|default:'' != '' %}
-                    <a href="javascript:;" class="buy_btn" id="buy_now">立即购买</a>
+                    <a href="javascript:;" class="buy_btn" id="buy_now">Buy Now</a>
                 {% else %}
-                    <a href="{% url "df_user:login" %}" class="buy_btn">立即购买</a>
+                    <a href="{% url "df_user:login" %}" class="buy_btn">Buy Now</a>
                 {% endif %}
                 {% if request.session.user_name|default:'' != '' %}
-                    <a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>
+                    <a href="javascript:;" class="add_cart" id="add_cart">Add to Cart</a>
                 {% else %}
-                    <a href="{% url "df_user:login" %}" class="add_cart" id="add_cart">加入购物车</a>
+                    <a href="{% url "df_user:login" %}" class="add_cart" id="add_cart">Add to Cart</a>
                 {% endif %}
 			</div>
 		</div>
@@ -94,13 +96,13 @@
 	<div class="main_wrap clearfix">
 		<div class="l_wrap fl clearfix">
 			<div class="new_goods">
-				<h3>新品推荐</h3>
+				<h3></h3>
 				<ul>
                     {% for goods in news %}
 					<li>
 						<a href="/{{ goods.id }}"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
 						<h4><a href="#">{{ goods.gtitle }}</a></h4>
-						<div class="prize">￥{{ goods.gprice }}</div>
+						<div class="prize">${{ goods.gprice }}</div>
 					</li>
                     {%  endfor %}
                 </ul>
@@ -109,13 +111,12 @@
 
 		<div class="r_wrap fr clearfix">
 			<ul class="detail_tab clearfix">
-				<li class="active">商品介绍</li>
-				<li>评论</li>
+				<li class="active">Description</li>
 			</ul>
 
 			<div class="tab_content">
 				<dl>
-					<dt>商品详情：</dt>
+					<dt>Product Details：</dt>
 					<dd>{{ goods.gcontent|safe }}</dd>
 				</dl>
 			</div>

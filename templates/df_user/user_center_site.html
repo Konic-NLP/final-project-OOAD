@@ -29,11 +29,11 @@
 					<form action="{% url "df_user:site_handle" %}" method="post">
                         {% csrf_token %}
 						<div class="form_group">
-							<label>new password</label>
+							<label>new password:</label>
 							<input type="password" name="pwd" >
 						</div>
                         <div class="form_group">
-                            <label>confirm password</label>
+                            <label>confirm password:</label>
                             <input type="password" name="confirm_pwd" >
                         </div>
 						<input type="submit" name="password_reset" value="reset the password" class="info_submit">

@@ -44,6 +44,11 @@
 
 
 
+
+
+
+
+
 	<div class="center_con clearfix">
 {#		<ul class="subnav fl">#}
 {#			<li><a href="#model01" class="fruit">新鲜水果</a></li>#}
@@ -73,7 +78,7 @@
 
 	<div class="list_model">
 		<div class="list_title clearfix">
-			<h3 class="fl" id="model01">New Products</h3>
+			<h3 class="fl" id="model01">New Arrival</h3>
 			{% comment %}<div class="subtitle fl">
 				<span>|</span>
 {#				<a href="#">鲜芒</a>#}
@@ -101,7 +106,7 @@
                 <li>
                     <h4><a href="/{{ goods.id }}/">{{ goods.gtitle }}</a></h4>
                     <a href="/{{ goods.id }}/"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
-                    <div class="prize"> ￥ {{ goods.gprice }} </div>
+                    <div class="prize"> $ {{ goods.gprice }} </div>
                 </li>
                 {% endfor %}
 			</ul>
@@ -123,14 +128,14 @@
 		</div>
 
 		<div class="goods_con clearfix">
-			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>
+{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type11 %}
                 <li>
                     <h4><a href="/{{ goods.id }}/">{{ goods.gtitle }}</a></h4>
                     <a href="/{{ goods.id }}/"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
 {#                    静态文件添加目录static前一定加"/"#}
-                    <div class="prize"> ￥ {{ goods.gprice }} </div>
+                    <div class="prize"> $ {{ goods.gprice }} </div>
                 </li>
                 {% endfor %}
 			</ul>
@@ -150,7 +155,7 @@
 		</div>
 
 		<div class="goods_con clearfix">
-			<div class="goods_banner fl"><img src="/static/images/banner03.jpg"></div>
+{#			<div class="goods_banner fl"><img src="/static/images/banner03.jpg"></div>#}
 			<ul class="goods_list fl">
 				<li>
 					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
@@ -190,7 +195,7 @@
 		</div>
 
 		<div class="goods_con clearfix">
-			<div class="goods_banner fl"><img src="/static/images/banner04.jpg"></div>
+{#			<div class="goods_banner fl"><img src="/static/images/banner04.jpg"></div>#}
 			<ul class="goods_list fl">
 				<li>
 					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>

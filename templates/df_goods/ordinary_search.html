@@ -7,39 +7,39 @@
 {% endblock %}
 
 {% block center_body %}
-    <div class="navbar_con">
-		<div class="navbar clearfix">
-			<div class="subnav_con fl">
-				<h1>全部商品分类</h1>
-				<span></span>
-				<ul class="subnav">
-					<li><a href="/list1_1_1/" class="fruit">新鲜水果</a></li>
-					<li><a href="/list2_1_1/" class="seafood">海鲜水产</a></li>
-					<li><a href="#" class="meet">猪牛羊肉</a></li>
-					<li><a href="#" class="egg">禽类蛋品</a></li>
-					<li><a href="#" class="vegetables">新鲜蔬菜</a></li>
-					<li><a href="#" class="ice">速冻食品</a></li>
-				</ul>
-			</div>
-			<ul class="navlist fl">
-				<li><a href="{% url "df_goods:index" %}">首页</a></li>
-				<li class="interval">|</li>
-				<li><a href="">手机生鲜</a></li>
-				<li class="interval">|</li>
-				<li><a href="">抽奖</a></li>
-			</ul>
-		</div>
-	</div>
+{#    <div class="navbar_con">#}
+{#		<div class="navbar clearfix">#}
+{#			<div class="subnav_con fl">#}
+{#				<h1>全部商品分类</h1>#}
+{#				<span></span>#}
+{#				<ul class="subnav">#}
+{#					<li><a href="/list1_1_1/" class="fruit">新鲜水果</a></li>#}
+{#					<li><a href="/list2_1_1/" class="seafood">海鲜水产</a></li>#}
+{#					<li><a href="#" class="meet">猪牛羊肉</a></li>#}
+{#					<li><a href="#" class="egg">禽类蛋品</a></li>#}
+{#					<li><a href="#" class="vegetables">新鲜蔬菜</a></li>#}
+{#					<li><a href="#" class="ice">速冻食品</a></li>#}
+{#				</ul>#}
+{#			</div>#}
+{#			<ul class="navlist fl">#}
+{#				<li><a href="{% url "df_goods:index" %}">首页</a></li>#}
+{#				<li class="interval">|</li>#}
+{#				<li><a href="">手机生鲜</a></li>#}
+{#				<li class="interval">|</li>#}
+{#				<li><a href="">抽奖</a></li>#}
+{#			</ul>#}
+{#		</div>#}
+{#	</div>#}
     <script type="text/javascript">
         if({{ search_status }}==0){
-            alert("您的查询结果为空，为您推荐以下商品");
+            alert("Your query result is empty, recommend the following products for you");
         }
     </script>
 	<div class="breadcrumb">
-		全部分类
+		All Category
 {#        {{ title }}#}
 {#		{% if id|default:' ' != ' ' %}#}
-        > 商品详情
+        > Product Details
 {#		{% endif %}#}
 	</div>
 
@@ -50,7 +50,7 @@
                 <a href="/{{ item.id }}/"><img src="{{ MEDIA_URL }}{{ item.gpic }}"></a>
                 <h4><a href="/{{ item.id }}/">{{ item.gtitle }}</a></h4>
                 <div class="operate">
-                    <span class="prize">￥{{ item.gprice }}</span>
+                    <span class="prize">${{ item.gprice }}</span>
                     <span class="unit">{{ item.gunit }}</span>
                     <a href="/cart/add{{ item.id }}_1/" class="add_goods" title="加入购物车"></a>
 {#						<a href="javasript:;/" class="add_goods" title="加入购物车"></a>#}

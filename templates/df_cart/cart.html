@@ -139,22 +139,22 @@
 {% endblock head %}
 
 {% block center_body %}
-	<div class="total_count">全部商品<em>{{ carts|length }}</em>件</div>
+	<div class="total_count">All Products<em>{{ carts|length }}</em>件</div>
 	<ul class="cart_list_th clearfix">
-		<li class="col01">商品名称</li>
-		<li class="col02">商品单位</li>
-		<li class="col03">商品单价</li>
-		<li class="col04">数量</li>
-		<li class="col05">小计</li>
-		<li class="col06">操作</li>
+		<li class="col01">Product Name</li>
+{#		<li class="col02">商品单位</li>#}
+		<li class="col02">Unit Price</li>
+		<li class="col03">Qty</li>
+		<li class="col04">Total Price</li>
+		<li class="col05">Delete</li>
 	</ul>
 
     {% for cart in carts %}
 	<ul class="cart_list_td clearfix" id="{{ cart.id }}">
 		<li class="col01"><input type="checkbox" name="" id="check_goods" checked="checked"></li>
 		<li class="col02"><img src="{{ MEDIA_URL }}{{ cart.goods.gpic }}"></li>
-		<li class="col03">{{ cart.goods.gtitle }}<br><em>{{ cart.goods.gprice }}元/{{ cart.goods.gunit }}</em><br><em>库存：<span id="goods_kucun">{{ cart.goods.gkucun }}</span></em></li>
-		<li class="col04">{{ cart.goods.gunit }}</li>
+		<li class="col03">{{ cart.goods.gtitle }}<br><em>${{ cart.goods.gprice }}</em><br><em>In Stock：<span id="goods_kucun">{{ cart.goods.gkucun }}</span></em></li>
+{#		<li class="col04">{{ cart.goods.gunit }}</li>#}
 		<li class="col05">{{ cart.goods.gprice }}</li>
 		<li class="col06">
 			<div class="num_add">
@@ -164,15 +164,15 @@
 			</div>
 		</li>
 		<li class="col07"></li>
-		<li class="col08"><a href="javascript:cart_del({{ cart.id }});">删除</a></li>
+		<li class="col08"><a href="javascript:cart_del({{ cart.id }});">Delete</a></li>
 	</ul>
     {% endfor %}
 
 	<ul class="settlements">
 		<li class="col01"><input type="checkbox" name="" checked="" id="check_all" href="javascript:;"></li>
-		<li class="col02">全选</li>
-		<li class="col03">合计(不含运费)：<span>¥</span><em id="total"></em><br>共计<b class="total_count1"></b>件商品</li>
-		<li class="col04"><a href="javascript:go_order()">去结算</a></li>
+		<li class="col02">Select All</li>
+		<li class="col03">Total Price：<span>¥</span><em id="total"></em><br>Total<b class="total_count1"></b>Product(s)</li>
+		<li class="col04"><a href="javascript:go_order()">Checkout</a></li>
 	</ul>
 
 {% endblock center_body %}

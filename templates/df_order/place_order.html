@@ -15,7 +15,7 @@
 
 {% block center_body %}
 	
-	<h3 class="common_title">确认收货地址</h3>
+	<h3 class="common_title">Shipping Address</h3>
 
 	<div class="common_list_con clearfix">
 		<dl>
@@ -29,7 +29,7 @@
 
 	</div>
 	
-	<h3 class="common_title">支付方式</h3>	
+	<h3 class="common_title">Payment Method</h3>
 	<div class="common_list_con clearfix">
 		<div class="pay_style_con clearfix">
 			<input type="radio" name="pay_style" checked>
@@ -43,22 +43,22 @@
 		</div>
 	</div>
 
-	<h3 class="common_title">商品列表</h3>
+	<h3 class="common_title">Product List</h3>
 	
 	<div class="common_list_con clearfix">
 		<ul class="goods_list_th clearfix">
-			<li class="col01">商品名称</li>
-			<li class="col02">商品单位</li>
-			<li class="col03">商品价格</li>
-			<li class="col04">数量</li>
-			<li class="col05">小计</li>		
+			<li class="col01">Product Name</li>
+{#			<li class="col02">商品单位</li>#}
+			<li class="col03">Unit Price</li>
+			<li class="col04">Qty</li>
+			<li class="col05">Total Price</li>
 		</ul>
         {% for cart in carts %}
         <ul class="goods_list_td clearfix" id="{{ cart.id }}">
 			<li class="col01">{{ forloop.counter }}</li>
 			<li class="col02"><img src="{{ MEDIA_URL }}{{ cart.goods.gpic }}"></li>
 			<li class="col03">{{ cart.goods.gtitle }}</li>
-			<li class="col04">{{ cart.goods.gunit }}</li>
+{#			<li class="col04">{{ cart.goods.gunit }}</li>#}
 			<li class="col05">{{ cart.goods.gprice }}</li>
 			<li class="col06">{{ cart.count }}</li>
 			<li class="col07">25.80元</li>
@@ -67,26 +67,26 @@
 
 	</div>
 
-	<h3 class="common_title">总金额结算</h3>
+	<h3 class="common_title">Checkout</h3>
 {#	<h3 class="common_title">订单提交时间{{ value|time }}</h3>#}
 
 	<div class="common_list_con clearfix">
 		<div class="settle_con">
-			<div class="total_goods_count">共<em>{{ carts|length }}</em>件商品，总金额<b>{{ total_price }}</b></div>
-			<div class="transit">运费：<b>{{ trans_cost }}元</b></div>
-			<div class="total_pay">实付款：<b>{{ total_trans_price }}</b></div>
+			<div class="total_goods_count">Total<em>{{ carts|length }}</em>product(s)，subtotal: $<b>{{ total_price }}</b></div>
+			<div class="transit">Shipping：$<b>{{ trans_cost }}</b></div>
+			<div class="total_pay">Total：$<b>{{ total_trans_price }}</b></div>
 		</div>
 	</div>
 
 	<div class="order_submit clearfix">
     	<a href="{% url "df_cart:cart" %}" class="edit_site">编辑收货地址</a>
 
-		<a href="javascript:;" id="order_btn">提交订单</a>
+		<a href="javascript:;" id="order_btn">Place the Order</a>
 	</div>	
 
 		<div class="popup_con">
 		<div class="popup">
-			<p>订单提交成功！</p>
+			<p>Successfully place the order！</p>
 		</div>
 
 		<div class="mask"></div>

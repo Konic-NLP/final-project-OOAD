@@ -12,7 +12,7 @@ def index(request):
     typelist = TypeInfo.objects.all()
     goodsinfo=GoodsInfo.objects.all()
     #  _set 连表操作
-    type=goodsinfo.order_by('-id')[:10]
+    type=goodsinfo.order_by('-id')[:8]
     type0 = typelist[0].goodsinfo_set.order_by('-id')[0:4]  # 按照上传顺序
     type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:4]  # 按照点击量
     type1 = typelist[1].goodsinfo_set.order_by('-id')[0:4]

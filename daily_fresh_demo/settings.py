@@ -103,7 +103,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # 指定根目录
 
 # 富文本编辑框的使用配置
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'silver',
+    'theme': 'advanced',
     'width': 600,
     'height': 400,
 }

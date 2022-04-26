@@ -1,17 +1,7 @@
 {% extends 'base.html' %}
 
-
-
-
 {% block center_body %}
-    <script type="text/javascript">
-if({{ success }}==1){
 
-    alert('modify successfully')
-}
-
-
-</script>
 
 	<div class="main_con clearfix">
 		<div class="left_menu_con clearfix">
@@ -25,35 +15,27 @@ if({{ success }}==1){
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
 				<h3 class="common_title2">Basic Information</h3>
-						 <form action="{% url "df_user:info_reset" %}" id='reg_form' method="post">
+                    <form action="{}" id='reg_form' method="post">
                     {% csrf_token %}
 
 						<ul class="user_info_list">
 							<li><span>username：</span>{{ user_name }}</li>
 
-                            	<li><span>full name</span>
-
-                                 <input type="text" name="fullname" class="full_name" value="{{ user_full_name}}" id="user_fullname">
-                                </li>
-
-                            <li>
-{#                                <label>email_</label>#}
-                                <label>email
-                                    <input type="text" name="email" class="email" value="{{user_email}}" id="email">
-                                </label>
+                            <li><span>full name:</span>
+                                <input type="text" name="fullname" class="contact" value="{{ user_full_Name}}" id="email">
                             </li>
-							<li><span>phone</span>
+
+                            <li><span>email:</span>
+                                <input type="text" name="email" class="nam" value="{{user_email}}" id="email">
+                            </li>
+
+							<li><span>phone:</span>
                                 <input type="text" name="phone" class="contact" value="{{user_phone}}" id="email">
-
                             </li>
-{#							<li><span>address</span>#}
-{##}
-{#                                 <input type="text" name="address" class="contact" value="{{ user_address }}" id="address">#}
-{#                                </li>#}
 
 
-                    			<li class="reg_sub">
-						        <input type="submit" value="Save changes" onclick="myFunction()">
+                            <li class="reg_sub">
+						        <input type="submit" value="Save changes">
 					        </li>
 
 				</div>
@@ -65,7 +47,7 @@ if({{ success }}==1){
                         <a href="/{{ good.id }}/"><img src="{{ MEDIA_URL }}{{ good.gpic }}"></a>
                         <h4><a href="/{{ good.id }}/">{{ good.gtitle }}</a></h4>
                         <div class="operate">
-                            <span class="prize">￥{{ good.gprice }}</span>
+                            <span class="prize">${{ good.gprice }}</span>
                             <span class="unit">{{ good.gprice }}/{{ good.gunit }}</span>
                             <a href="/cart/add{{ good.id }}_1/" class="add_goods" title="add to cart"></a>
                         </div>

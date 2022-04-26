@@ -16,8 +16,8 @@
                 {% for orderinfo in page %}
 				<ul class="order_list_th w978 clearfix">
 					<li class="col01">{{ orderinfo.odate|date }}</li>
-					<li class="col02">订单号：{{ orderinfo.oid }}</li>
-					<li class="col02 stress">已支付</li>
+					<li class="col02">ORDER #：{{ orderinfo.oid }}</li>
+					<li class="col02 stress">ORDER PLACED</li>
 				</ul>
 
 				<table class="order_list_table w980">
@@ -27,15 +27,15 @@
                                 {% for order_detail in orderinfo.orderdetailinfo_set.all %}
 								<ul class="order_goods_list clearfix">					
 									<li class="col01"><img src="{{ MEDIA_URL }}{{ order_detail.goods.gpic }}"></li>
-                                    <li class="col02">{{ order_detail.goods.gtitle }}<em class="good_price">{{ order_detail.goods.gprice }}</em>元/<em>{{ order_detail.goods.gunit }}</em></li>
-									<li class="col03">{{ order_detail.count }}件</li>
-									<li class="col04">11.80元</li>	
+                                    <li class="col02">{{ order_detail.goods.gtitle }}<em class="good_price">{{ order_detail.goods.gprice }}</em>$ /<em>{{ order_detail.goods.gunit }}</em></li>
+									<li class="col03">{{ order_detail.count }} order</li>
+									<li class="col04">$ {{ order_detail.goods.gprice }}</li>
 								</ul>
                                 {% endfor %}
 							</td>
-							<td width="15%">{{ orderinfo.ototal }}元</td>
-							<td width="15%">已付款</td>
-							<td width="15%"><a href="#" class="oper_btn">查看物流</a></td>
+							<td width="15%">$ {{ orderinfo.ototal }}</td>
+							<td width="15%">PAID</td>
+							<td width="15%"><a href="#" class="oper_btn">Track Package</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -67,7 +67,7 @@
         $('.col04').each(function () {
             count = $(this).prev().text();
             price = $(this).prev().prev().find('.good_price').text();
-            $(this).html(parseFloat(count,2)*parseFloat(price,2)+'元');
+            $(this).html(‘$’+parseFloat(count,2)*parseFloat(price,2));
             }
 
         )

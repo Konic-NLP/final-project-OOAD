@@ -1,6 +1,6 @@
-body{font-family:'Times New Roman';font-size:12px;color:#666;}
+body{font-family:'Times New Roman';font-size:12px;color:#666}
 html,body{height:100%}
-/* 顶部样式 */
+
 .header_con{
 	background-color:#f7f7f7;
 	height:29px;
@@ -103,10 +103,10 @@ html,body{height:100%}
 .adv a{display:block;float:left;}
 
 
-/* 商品列表样式 */
+/* Product list */
 
 .list_model{width:1200px;height:640px;margin:15px auto 0;}
-.list_title{height:auto;border-bottom:2px solid black}
+.list_title{height:auto;border-bottom:2px solid black; margin-top:50px;}
 .list_title h3{height:40px;line-height:40px;font-size:16px;color: black;font-weight:bold;}
 .list_title .subtitle{height:20px;line-height:20px;margin-top:15px;}
 .list_title .subtitle span{color:#666;margin:0 10px 0 20px;}
@@ -116,7 +116,7 @@ html,body{height:100%}
 
 .goods_con{height:500px;}
 .goods_banner{width:200px;height:300px;}
-.goods_banner img{width:200px;height:300px;}
+/*.goods_banner img{width:200px;height:300px;}*/
 
 .goods_list{width:1000px;height:299px;border-bottom:1px solid #ededed}
 .goods_list li{height:299px;width:249px;border-right:1px solid #ededed;float:left}
@@ -130,11 +130,13 @@ html,body{height:100%}
 .goods_list li img{display:block;width:180px;height:180px;margin:0 auto;}
 .goods_list li .prize{text-align:center;font-size:20px;color:#c40000;margin-top:5px;}
 
-/* 页面底部样式 */
+/* footer */
+/*
 .footer{
-	border-top:0px solid #42ad46;
+	border-top:0px solid black;
 	margin:30px 0;
 }
+*/
 
 .foot_link{text-align:center;margin-top:30px;}
 .foot_link a,.foot_link span{color:#4e4e4e;}
@@ -143,11 +145,11 @@ html,body{height:100%}
 .footer p{text-align:center; margin-top:10px;}
 
 
-/* 二级页面面包屑导航 */
+/* breadcrumb */
 .breadcrumb{
 	width:1200px;height:40px;margin:0 auto;
 }
-.breadcrumb a{line-height:40px;color:#37ab40}
+.breadcrumb a{line-height:40px;color: black}
 .breadcrumb a:hover{color:#ff8800}
 .breadcrumb span{line-height:40px;color:#666;padding:0 5px;}
 
@@ -157,11 +159,11 @@ html,body{height:100%}
 .r_wrap{width:980px;}
 
 
-/* 新品推荐样式 */
+/* New Product */
 
 .new_goods{
 	border:1px solid #ededed;
-	border-top:2px solid #37ab40;
+	border-top:2px solid black;
 	padding-bottom:10px;
 }
 
@@ -178,11 +180,13 @@ html,body{height:100%}
 
 
 
-/* 商品列表样式 */
+/* Product Sort */
 
+/*
 .sort_bar{height:30px;background-color:#f0fdec}
 .sort_bar a{display:block;height:30px;line-height:30px;padding:0 20px;float:left;color:#000}
 .sort_bar .active{background-color:#37ab40;color:#fff;}
+*/
 
 
 .goods_type_list{
@@ -204,7 +208,7 @@ html,body{height:100%}
 .goods_type_list .operate .add_goods{display:inline-block;width:15px;height:15px;background:url(../images/shop_cart.png);position:absolute;right:0;top:3px;}
 
 
-/* 分页样式 */
+/* Pagination */
 
 .pagenation{height:32px;text-align:center;font-size:0;margin:30px auto;}
 .pagenation a{display:inline-block;border:1px solid #d2d2d2;background-color:#f8f6f7;font-size:12px;padding:7px 10px;color:#666;margin:5px}
@@ -212,7 +216,7 @@ html,body{height:100%}
 .pagenation .active{background-color:#fff;color:#43a200}
 
 
-/* 商品详情样式 */
+/* Product Detail */
 .goods_detail_con{
 	width:1198px;
 	height:398px;
@@ -233,8 +237,8 @@ html,body{height:100%}
 
 .goods_num{height:52px;margin-top:19px;}
 .goods_num .num_name{width:70px;height:52px;line-height:52px;}
-.goods_num .num_add{width:75px;height:50px;border:1px solid #dddddd}
-.goods_num .num_add input{width:49px;height:50px;text-align:center;line-height:50px;border:0px;outline:none;font-size:14px;color:#666}
+.goods_num .num_add{width:76px;height:50px;border:1px solid #dddddd}
+.goods_num .num_add input{width:49px;height:48px;text-align:center;line-height:50px;border:0px;outline:none;font-size:18px;color:#666}
 .goods_num .num_add .add,.goods_num .num_add .minus{width:25px;line-height:25px;text-align:center;border-left:1px solid #ddd;border-bottom:1px solid #ddd;color:#666;font-size:14px}
 .goods_num .num_add .minus{border-bottom:0px}
 
@@ -249,12 +253,12 @@ html,body{height:100%}
 
 .detail_tab{
 	height:35px;
-	border-bottom:1px solid #37ab40
+	border-bottom:1px solid black
 }
 
 .detail_tab li{height:34px;line-height:34px;padding:0 30px;font-size:14px;color:#333333;float:left;border:1px solid #e8e8e8;border-bottom:0px;cursor:pointer;background-color:#faf8f8}
 
-.detail_tab li.active{border-top:2px solid #37ab40;position:relative;background-color:#fff;border-left:1px solid #37ab40;border-right:1px solid #37ab40;top:-1px;height:35px;}
+.detail_tab li.active{border-top:2px solid black;position:relative;background-color:#fff;border-left:1px solid black;border-right:1px solid black;top:-1px;height:35px;}
 
 .tab_content dt{margin-top:10px;font-size:16px;color:#044d39}
 .tab_content dd{line-height:24px;margin-top:5px;}
@@ -291,7 +295,7 @@ html,body{height:100%}
 
 .input_submit{width:100%;height:40px;position:absolute;left:0;top:180px;background-color:black;color:#fff;font-size:22px;border:0px;font-family:'Times New Roman';cursor:pointer;}
 
-/* 注册页面 */
+/* Login Page */
 .register_con{
 	width:700px;
 	height:560px;
@@ -347,10 +351,10 @@ html,body{height:100%}
 .cart_list_td .col02{width:12%;}
 .cart_list_td .col03{width:10%;}
 .cart_list_td .col04{width:16%;}
-.cart_list_td .col05{width:13%;}
-.cart_list_td .col06{width:12%;}
-.cart_list_td .col07{width:15%;}
-.cart_list_td .col08{width:18%;}
+.cart_list_td .col05{width:13%; margin-left:15px}
+.cart_list_td .col06{width:12%; margin-left:25px}
+.cart_list_td .col07{width:15%; margin-left:-15px}
+.cart_list_td .col08{width:18%; margin-left:-30px}
 
 .cart_list_td .col02 img{width:100px;height:100px;border:1px solid #ddd;display:block;margin:10px auto 0;}
 .cart_list_td .col03{height:48px;text-align:left;line-height:24px;margin-top:38px;}
@@ -520,7 +524,6 @@ html,body{height:100%}
 	background-color:#f9f9f9;
 	margin:10px 0 15px;
 	padding:10px 0;
-	height:90px;
 }
 
 .user_info_list li{
@@ -532,7 +535,7 @@ html,body{height:100%}
 .user_info_list li span{
 	width:100px;
 	float:left;
-	text-align:right;
+	text-align:left;
 }
 
 .info_con{
@@ -575,12 +578,13 @@ html,body{height:100%}
 }
 
 .site_con .form_group label{
-	width:100px;
+	width:110px;
 	float:left;
-	text-align:right;
+	text-align:left;
 	font-size:14px;
 	height:40px;
 	line-height:40px;
+	margin-left: 30px
 }
 
 .site_con .form_group input{
@@ -605,7 +609,7 @@ html,body{height:100%}
 	padding:10px;
 }
 .info_submit{
-	width:80px;
+	width:130px;
 	height:30px;
 	background-color:#37ab40;
 	border:0px;
@@ -618,3 +622,40 @@ html,body{height:100%}
 .stress{
 	color:#ff8800;
 }
+
+
+
+
+
+
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  width: 1200px;
+  margin-left:201px;
+}
+
+/*!* Style the links inside the navigation bar *!*/
+/*.topnav a {*/
+/*  float: left;*/
+/*  color: #f2f2f2;*/
+/*  text-align: center;*/
+/*  padding: 14px 16px;*/
+/*  text-decoration: none;*/
+/*  font-size: 17px;*/
+/*}*/
+
+/*!* Change the color of links on hover *!*/
+/*.topnav a:hover {*/
+/*  background-color: #ddd;*/
+/*  color: black;*/
+/*}*/
+
+/*!* Add a color to the active/current link *!*/
+/*.topnav a.active {*/
+/*  background-color: #04AA6D;*/
+/*  color: white;*/
+/*}*/
