@@ -38,17 +38,17 @@
                    {% if sort == '1' %}
                     class="active"
                    {% endif %}
-                    >默认</a>
+                    >Default</a>
                 <a href="/list{{ typeinfo.id }}_1_2"
                    {% if sort == '2' %}
                     class="active"
                    {% endif %}
-                    >价格</a>
+                    >Price</a>
                 <a href="/list{{ typeinfo.id }}_1_3"
                    {% if sort == '3' %}
                     class="active"
                    {% endif %}
-                    >人气</a>
+                    >Hot</a>
 			</div>
 
 			<ul class="goods_type_list clearfix">
@@ -93,7 +93,7 @@
 
 {#                是否为第二页#}
                 {% if page.has_next %}
-				<a href="/list{{ typeinfo.id }}_{{ page.next_page_number }}_{{ sort }}">下一页></a>
+				<a href="/list{{ typeinfo.id }}_{{ page.next_page_number }}_{{ sort }}">Next Page></a>
                 {% endif %}
 			</div>
 		</div>

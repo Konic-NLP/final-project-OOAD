@@ -74,7 +74,7 @@
 
 {#                是否又第二页#}
             {% if page.has_next %}
-                <a href="{% url "df_user:ordinary_search" %}?q={{ query }}&amp;page={{ page.next_page_number }}">下一页></a>
+                <a href="{% url "df_user:ordinary_search" %}?q={{ query }}&amp;page={{ page.next_page_number }}">Next Page></a>
             {% endif %}
         </div>
     </div>
