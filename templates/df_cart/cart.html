@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<script>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+
+
+    <script>
 
     $(function () {
         total();
@@ -139,6 +147,46 @@
 {% endblock head %}
 
 {% block center_body %}
+
+    <nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="/">Home</a>
+	</div>
+	<div>
+		<ul class="nav navbar-nav">
+            <li><a href="/list7_1_1/">FOOD</a></li>
+            <li><a href="/list8_1_1/">ELECTRONIC</a></li>
+			<li><a href="/list9_1_1/">GAME</a></li>
+            <li><a href="/list10_1_1/">ACCESSORIES</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					CLOTHES
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="/list11_1_1/">MAN</a></li>
+					<li><a href="/list12_1_1/">WOMAN</a></li>
+					<li><a href="/list13_1_1/">KIDS</a></li>
+{#					<li class="divider"></li>#}
+{#					<li><a href="#">分离的链接</a></li>#}
+{#					<li class="divider"></li>#}
+{#					<li><a href="#">另一个分离的链接</a></li>#}
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+    </nav>
+
+
+
+
+
+
+
+
+
 	<div class="total_count">  All Products<em>{{ carts|length }}</em>items</div>
 	<ul class="cart_list_th clearfix">
 		<li class="col01">Product Name</li>
