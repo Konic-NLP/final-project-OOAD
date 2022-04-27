@@ -1,14 +1,47 @@
 {% extends 'base.html' %}
 
 {% block head %}
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
+
+
+
+
+    $(document).ready(function(){
+
+          $("#btn2").click(function(){
+    {#alert("HTML: " + $("#test").html());#}
+	$("#receiver").removeAttr('disabled')
+              $("#phone").removeAttr('disabled')
+               $("#address").removeAttr('disabled')
+
+
+  });
+           $("#btn").click(function(){
+    {#alert("HTML: " + $("#test").html());#}
+	$("#receiver").attr('disabled','disabled')
+              $("#phone").attr('disabled','disabled')
+               	$("#address").attr('disabled','disabled')
+
+
+  });
+
+
+
+
+
     $(function () {
         $('.col07').each(function () {
             count = $(this).prev().text();
             price = $(this).prev().prev().text();
-            $(this).html(parseFloat(count,2)*parseFloat(price,2)+'元')
+            $(this).html(parseFloat(count, 2) * parseFloat(price, 2) + '元')
+
+
         })
-    })
+
+
+    })})
+
     </script>
 
 {% endblock %}
@@ -17,17 +50,41 @@
 	
 	<h3 class="common_title">Shipping Address</h3>
 
-	<div class="common_list_con clearfix">
-		<dl>
-			<dt>寄送到：</dt>
-			<span><input type="radio" name="" checked="checked"></span>
-            当前地址：<span class="user_info_check">{{ user.oaddress }}</span>
-            收件人：<span class="user_info_check">{{ user.oreceiver }} </span>
-            电话：<span class="user_info_check">{{ user.ocontact }}</span>
-		</dl>
-		<a href="{% url "df_user:site" %}" class="edit_site">编辑收货地址</a>
 
-	</div>
+{#    <ul class="user_info_list">#}
+	<dl>
+			<dt>Sent：</dt>
+{#        <form action="" id='reg_form' method="post">#}
+{#    {% csrf_token %}#}
+
+              <li>
+
+                                <label>receiver
+                                    <input disabled type="text" name="receiver" class="user_info_check" value="{{ user.oreceiver }}" id="receiver">
+                                </label>
+                            </li>
+                                <label>email
+                                 <input disabled  type="text" name="fullname" class="user_info_check" value="{{ user.oaddress}}" id="address">
+                                </label>
+
+
+							<li><span>phone</span>
+                                <input disabled type="text" name="phone" class="user_info_check" value="{{ user.ocontact }}" id="phone">
+
+                            </li>
+
+
+{#			<span><input type="radio" name="" checked="checked"></span>#}
+{#            Address：<span disabled="disabled" class="user_info_check" id="address">{{ user.oaddress }}</span>#}
+{#            Receiver：<span disabled="disabled" class="user_info_check" id="'receiver">{{ user.oreceiver }} </span>#}
+{#            Phone：<span disabled="disabled" class="user_info_check" id="phone">{{ user.ocontact }}</span>#}
+{#		</dl>#}
+{#		<a href="{% url "df_user:site" %}" class="edit_site">编辑收货地址</a>#}
+        		<li class="reg_sub">
+						        <input type="submit" id ='btn' value="Save changes" onclick="myFunction()">
+                             <button id="btn2">change the address</button>
+					        </li>
+	</dl>
 	
 	<h3 class="common_title">Payment Method</h3>
 	<div class="common_list_con clearfix">
@@ -96,7 +153,7 @@
 		$('#order_btn').click(function() {
 		    //检查当前收货地址是否正确
 		    $('.user_info_check').each(function () {
-		        text = $(this).text();
+		        text = $(this).val();
 				number = 0;
 		        if (text == ''){
 					number = 1;
@@ -106,7 +163,9 @@
 				alert('请填写正确的收货地址');
 				window.location.href = '{% url "df_user:site" %}';
 			}
-
+            receiver=$("#receiver").val()
+            address=$("#address").val()
+            contact=$("#phone").val()
 		    //获取所有id，拼接成字符串
             cartids = '';
             $('.goods_list_td').each(function () {
@@ -117,6 +176,10 @@
 		    data = {
 		            'cart_ids':cartids,
                     'total':total,
+                    'address':address,
+                    'receiver':receiver,
+                    'contact':contact,
+
                     'csrfmiddlewaretoken':'{{ csrf_token }}'
 		    };
 

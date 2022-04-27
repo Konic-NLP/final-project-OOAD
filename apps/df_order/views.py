@@ -57,6 +57,9 @@ def order_handle(request):
     tran_id = transaction.savepoint()  # 保存事务发生点
     cart_ids = request.POST.get('cart_ids')  # 用户提交的订单购物车，此时cart_ids为字符串，例如'1,2,3,'
     user_id = request.session['user_id']  # 获取当前用户的id
+    address=request.POST.get('address')
+    receiver=request.POST.get('receiver')
+    phone = request.POST.get('contact')
     data = {}
     try:
         order_info = OrderInfo()  # 创建一个订单对象
@@ -65,6 +68,9 @@ def order_handle(request):
         order_info.odate = now  # 订单时间
         order_info.user_id = int(user_id)  # 订单的用户id
         order_info.ototal = Decimal(request.POST.get('total'))  # 从前端获取的订单总价
+        order_info.oaddress=address
+        order_info.ocontact=phone
+        order_info.oreceiver=receiver
         order_info.save()  # 保存订单
 
         for cart_id in cart_ids.split(','):  # 逐个对用户提交订单中的每类商品即每一个小购物车

@@ -9,7 +9,7 @@ class OrderInfo(models.Model):  # 大订单
     odate = models.DateTimeField(auto_now=True, verbose_name="order_time")
     oIsPay = models.BooleanField(default=False, verbose_name="is_pay")
     ototal = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="total")
-    oaddress = models.CharField(max_length=150, verbose_name="order_address")
+    oaddress = models.CharField(max_length=150,default='', verbose_name="order_address")
     oreceiver=models.CharField(max_length=20,default='',verbose_name='order_receiver')
     ocontact=models.CharField(max_length=11, default="", verbose_name="receiver_phone")
     # 虽然订单总价可以由多个商品的单价以及数量求得，但是由于用户订单的总价的大量使用，忽略total的冗余度

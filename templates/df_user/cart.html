@@ -142,19 +142,19 @@
 	<div class="total_count">  All Products<em>{{ carts|length }}</em>items</div>
 	<ul class="cart_list_th clearfix">
 		<li class="col01">Product Name</li>
-{#		<li class="col02">商品单位</li>#}
-		<li class="col02">Unit Price</li>
-		<li class="col03">Qty</li>
-		<li class="col04">Total Price</li>
-		<li class="col05">Delete</li>
+		<li class="col02">Unit</li>
+		<li class="col03">Price</li>
+		<li class="col04">Number</li>
+		<li class="col05">Total</li>
+		<li class="col06">Operation</li>
 	</ul>
 
     {% for cart in carts %}
 	<ul class="cart_list_td clearfix" id="{{ cart.id }}">
 		<li class="col01"><input type="checkbox" name="" id="check_goods" checked="checked"></li>
 		<li class="col02"><img src="{{ MEDIA_URL }}{{ cart.goods.gpic }}"></li>
-		<li class="col03">{{ cart.goods.gtitle }}<br><em>${{ cart.goods.gprice }}</em><br><em>In Stock：<span id="goods_kucun">{{ cart.goods.gkucun }}</span></em></li>
-{#		<li class="col04">{{ cart.goods.gunit }}</li>#}
+		<li class="col03">{{ cart.goods.gtitle }}<br><em>${{ cart.goods.gprice }}/{{ cart.goods.gunit }}</em><br><em>Stock：<span id="goods_kucun">{{ cart.goods.gkucun }}</span></em></li>
+		<li class="col04">{{ cart.goods.gunit }}</li>
 		<li class="col05">{{ cart.goods.gprice }}</li>
 		<li class="col06">
 			<div class="num_add">
