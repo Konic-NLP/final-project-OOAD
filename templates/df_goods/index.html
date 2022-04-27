@@ -128,7 +128,7 @@
 		<div class="goods_con clearfix">
 {#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
-                {% for goods in type11 %}
+                {% for goods in type100 %}
                 <li>
                     <h4><a href="/{{ goods.id }}/">{{ goods.gtitle }}</a></h4>
                     <a href="/{{ goods.id }}/"><img src="{{ MEDIA_URL }}{{ goods.gpic }}"></a>
@@ -193,6 +193,8 @@
                 {% endfor %}
 			</ul>
 		</div>
+
+
 	</div>
 
 	{% comment %}<div class="list_model">

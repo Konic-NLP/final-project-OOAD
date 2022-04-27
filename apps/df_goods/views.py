@@ -13,18 +13,20 @@ def index(request):
     goodsinfo=GoodsInfo.objects.all()
     #  _set 连表操作
     type=goodsinfo.order_by('-id')[:8]
-    type0 = typelist[0].goodsinfo_set.order_by('-id')[0:4]  # 按照上传顺序
-    type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:4]  # 按照点击量
-    type1 = typelist[1].goodsinfo_set.order_by('-id')[0:4]
-    type11 = typelist[1].goodsinfo_set.order_by('-gclick')[0:4]
-    type2 = typelist[2].goodsinfo_set.order_by('-id')[0:4]
-    type21 = typelist[2].goodsinfo_set.order_by('-gclick')[0:4]
-    type3 = typelist[3].goodsinfo_set.order_by('-id')[0:4]
-    type31 = typelist[3].goodsinfo_set.order_by('-gclick')[0:4]
-    type4 = typelist[4].goodsinfo_set.order_by('-id')[0:4]
-    type41 = typelist[4].goodsinfo_set.order_by('-gclick')[0:4]
-    type5 = typelist[5].goodsinfo_set.order_by('-id')[0:4]
-    type51 = typelist[5].goodsinfo_set.order_by('-gclick')[0:4]
+    type0 = typelist[0].goodsinfo_set.order_by('-id')[0:8]  # 按照上传顺序
+    type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:8]  # 按照点击量
+    type1 = typelist[1].goodsinfo_set.order_by('-id')[0:8]
+    type11 = typelist[1].goodsinfo_set.order_by('-gclick')[0:8]
+    type2 = typelist[2].goodsinfo_set.order_by('-id')[0:8]
+    type21 = typelist[2].goodsinfo_set.order_by('-gclick')[0:8]
+    type3 = typelist[3].goodsinfo_set.order_by('-id')[0:8]
+    type31 = typelist[3].goodsinfo_set.order_by('-gclick')[0:8]
+    type4 = typelist[4].goodsinfo_set.order_by('-id')[0:8]
+    type41 = typelist[4].goodsinfo_set.order_by('-gclick')[0:8]
+    type5 = typelist[5].goodsinfo_set.order_by('-id')[0:8]
+    type51 = typelist[5].goodsinfo_set.order_by('-gclick')[0:8]
+
+    type100 = goodsinfo.order_by('-gclick')[:8]
 
     cart_num = 0
     # 判断是否存在登录状态
@@ -34,7 +36,7 @@ def index(request):
         cart_num = CartInfo.objects.filter(user_id=int(user_id)).count()
 
     context = {
-        'title': 'aas',
+        'title': 'HOME',
         'cart_num': cart_num,
         'guest_cart': 1,
 
@@ -44,6 +46,7 @@ def index(request):
         'type3': type3, 'type31': type31,
         'type4': type4, 'type41': type41,
         'type5': type5, 'type51': type51,
+        'type100': type100
     }
 
     return render(request, 'df_goods/index.html', context)
