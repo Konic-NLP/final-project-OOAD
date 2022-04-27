@@ -1,38 +1,46 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+
+{% endblock head %}
 {% block center_body %}
 
 
     <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#">Home</a>
+		<a class="navbar-brand" href="/">Home</a>
 	</div>
 	<div>
 		<ul class="nav navbar-nav">
-            {#<li class="active"><a href="#">Food</a></li>#}
-			<li><a href="#">FOOD</a></li>
-            <li><a href="#">APPREAL</a></li>
+            <li><a href="/list7_1_1/">FOOD</a></li>
+            <li><a href="/list8_1_1/">ELECTRONIC</a></li>
+			<li><a href="/list9_1_1/">GAME</a></li>
+            <li><a href="/list10_1_1/">ACCESSORIES</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					Electronic
+					CLOTHES
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="#">jmeter</a></li>
-					<li><a href="#">EJB</a></li>
-					<li><a href="#">Jasper Report</a></li>
-					<li class="divider"></li>
-					<li><a href="#">分离的链接</a></li>
-					<li class="divider"></li>
-					<li><a href="#">另一个分离的链接</a></li>
+					<li><a href="/list11_1_1/">MAN</a></li>
+					<li><a href="/list12_1_1/">WOMAN</a></li>
+					<li><a href="/list13_1_1/">KIDS</a></li>
+{#					<li class="divider"></li>#}
+{#					<li><a href="#">分离的链接</a></li>#}
+{#					<li class="divider"></li>#}
+{#					<li><a href="#">另一个分离的链接</a></li>#}
 				</ul>
 			</li>
 		</ul>
 	</div>
 	</div>
     </nav>
-	</div>
 
 
 	<div class="breadcrumb">

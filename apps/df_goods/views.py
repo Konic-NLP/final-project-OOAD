@@ -80,7 +80,7 @@ def good_list(request, tid, pindex, sort):
     # 返回Page对象，包含商品信息
     page = paginator.page(int(pindex))
     context = {
-        'title': '商品列表',
+        'title': 'Product List',
         'guest_cart': guest_cart,
         'cart_num': cart_num,
         'page': page,

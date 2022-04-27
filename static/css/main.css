@@ -91,7 +91,7 @@ html,body{height:100%}
 .subnav li a:hover{color:#ff8800}
 
 
-.slide{width:760px;height:270px;position:relative;overflow:hidden;margin-left:230px;}
+.slide{width:760px;height:270px;position:relative;overflow:hidden;margin-left:200px;}
 .slide .slide_pics{position:relative;left:0;top:0;width:760px;height:270px;}
 .slide .slide_pics li{width:760px;height:270px;position:absolute;left:0;top:0}
 .slide .next{background-position:left -428px;left:732px;}
