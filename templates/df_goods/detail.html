@@ -51,6 +51,11 @@
 {#             $('add_cart').attr('href', '/cart/add'+$('gid').val())#}
         });
     });
+
+
+
+
+
     </script>
 
 {% endblock head %}
@@ -173,10 +178,28 @@
                 num = parseInt($('.num_show').val());
                 $.get('/cart/add{{ goods.id }}_'+num+'/',function (data) {
                     $('#show_count').text(data.count);
+
                 });
             });
         });
 
+		$('#add_cart').click(function(){
+			$(".cart_mask").css("display","block");
+			$(".small_cart").css("display","block");
+		});
+
+		$(".close_icon").click(function(){
+			$(".small_cart").css("display","none");
+			$(".cart_mask").css("display","none");
+		});
+		$(".continue").click(function(){
+			$(".small_cart").css("display","none");
+			$(".cart_mask").css("display","none");
+		});
+		$(".cart_mask").click(function(){
+			$(".small_cart").css("display","none");
+			$(".cart_mask").css("display","none");
+		});
     });
 	</script>
 
