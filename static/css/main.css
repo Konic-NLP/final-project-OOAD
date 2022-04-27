@@ -1,4 +1,4 @@
-body{font-family:'Times New Roman';font-size:12px;color:#666}
+body{font-family:'Times New Roman';font-size:16px;color:#666}
 html,body{height:100%}
 
 .header_con{
@@ -389,7 +389,7 @@ html,body{height:100%}
 .common_list_con dt{font-size:14px;font-weight:bold;margin-bottom:10px}
 .common_list_con dd input{vertical-align:bottom;margin-right:10px}
 
-.edit_site{position:absolute; right:20px;top:30px;width:100px;height:30px;background-color:#37ab40;text-align:center;line-height:30px;color:#fff;margin: 750px 1300px 0 0;}
+.edit_site{position:absolute; right:20px;top:30px;width:160px;height:40px;background-color:black;text-align:center;line-height:30px;color:#fff;margin: 814px 1230px 0 0;}
 
 .pay_style_con{margin:20px;}
 .pay_style_con input{float:left;margin:14px 7px 0 0;}

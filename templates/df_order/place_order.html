@@ -50,41 +50,46 @@
 	
 	<h3 class="common_title">Shipping Address</h3>
 
+    <div class="common_list_con clearfix">
 
-{#    <ul class="user_info_list">#}
-	<dl>
-			<dt>Sent：</dt>
+{#     <ul class="user_info_list">#}
+	    <dl>
+			<dt>Sent to：</dt>
 {#        <form action="" id='reg_form' method="post">#}
 {#    {% csrf_token %}#}
 
-              <li>
+                <li>
+                    <label>Receiver:
+                        <input disabled type="text" name="receiver" class="user_info_check" value="{{ user.oreceiver }}" id="receiver">
+                    </label>
+                </li>
+                <li>
+                    <label>Address:
+                        <input disabled  type="text" name="fullname" class="user_info_check" value="{{ user.oaddress}}" id="address">
+                    </label>
+                </li>
 
-                                <label>receiver
-                                    <input disabled type="text" name="receiver" class="user_info_check" value="{{ user.oreceiver }}" id="receiver">
-                                </label>
-                            </li>
-                                <label>email
-                                 <input disabled  type="text" name="fullname" class="user_info_check" value="{{ user.oaddress}}" id="address">
-                                </label>
-
-
-							<li><span>phone</span>
-                                <input disabled type="text" name="phone" class="user_info_check" value="{{ user.ocontact }}" id="phone">
-
-                            </li>
+                <li><span>Phone: </span>
+                    <input disabled type="text" name="phone" class="user_info_check" value="{{ user.ocontact }}" id="phone">
+                </li>
 
 
 {#			<span><input type="radio" name="" checked="checked"></span>#}
-{#            Address：<span disabled="disabled" class="user_info_check" id="address">{{ user.oaddress }}</span>#}
-{#            Receiver：<span disabled="disabled" class="user_info_check" id="'receiver">{{ user.oreceiver }} </span>#}
-{#            Phone：<span disabled="disabled" class="user_info_check" id="phone">{{ user.ocontact }}</span>#}
-{#		</dl>#}
-{#		<a href="{% url "df_user:site" %}" class="edit_site">编辑收货地址</a>#}
+{#              Address：<span disabled="disabled" class="user_info_check" id="address">{{ user.oaddress }}</span>#}
+{#              Receiver：<span disabled="disabled" class="user_info_check" id="'receiver">{{ user.oreceiver }} </span>#}
+{#              Phone：<span disabled="disabled" class="user_info_check" id="phone">{{ user.ocontact }}</span>#}
+{#		        </dl>#}
+{#		        <a href="{% url "df_user:site" %}" class="edit_site">编辑收货地址</a>#}
         		<li class="reg_sub">
-						        <input type="submit" id ='btn' value="Save changes" onclick="myFunction()">
-                             <button id="btn2">change the address</button>
-					        </li>
-	</dl>
+                    <input type="submit" id ='btn' value="Save changes" onclick="myFunction()">
+                    <button id="btn2">change the address</button>
+                </li>
+	    </dl>
+    </div>
+
+    <style>
+        dl{margin-left: 210px;}
+    </style>
 	
 	<h3 class="common_title">Payment Method</h3>
 	<div class="common_list_con clearfix">
@@ -160,7 +165,7 @@
 				}
             });
 			if (number == 1){
-				alert('请填写正确的收货地址');
+				alert('Please input the correct address');
 				window.location.href = '{% url "df_user:site" %}';
 			}
             receiver=$("#receiver").val()
@@ -200,7 +205,7 @@
                     });
                 }
                 else {
-                    alert('订单提交失败')
+                    alert('Place the order failed')
                 }
             })
 		});
