@@ -17,9 +17,9 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 
 **Final Class Diagram:** 
 
-**UML for Project5:** [link]
+**UML for Project5:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project5%20UML.pdf)
 
-**UML for Project6:** [link](https://github.com/ravenouse/OOAD-Final-Project/blob/main/Shopping%20Class%20Diagram%20(Project6).pdf)
+**UML for Project6:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project6%20UML.pdf)
 
 **Documentation of UML changes:** [link](https://docs.google.com/document/d/19sNARZsjykJEfHG_ropwVkZsUiufORlpjCKaFUAuUww/edit?usp=sharing)
 
