@@ -43,11 +43,12 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 first, please create a virtual enviorment
 
 ` pip install virtualenv`
-`virtualenv the name for the environment, e.g   virtualenv venv`
+
+`virtualenv [the name for the environment]     e.g   virtualenv venv`
 
 activate the virtual enviroment
 
-`source activate venv`
+`source activate [the name for the virtualvenv]`
 
 To intall all the packages:
 
