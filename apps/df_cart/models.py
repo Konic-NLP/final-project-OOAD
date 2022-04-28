@@ -2,7 +2,7 @@ from django.db import models
 
 from df_user.models import UserInfo
 from df_goods.models import GoodsInfo
-
+# using foreign key to link the items in the cart to the user and the items
 
 class CartInfo(models.Model):
 
