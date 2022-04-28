@@ -13,15 +13,15 @@
 
     $(function () {
         total();
-        {#    全选全消#}
+
         $('#check_all').click(function () {
-    {#        获取当前全选框的状态#}
+
 
             state=$(this).prop('checked');
-    {#        将其他的选矿 都设置成这个状态#}
+
             $(':checkbox:not(#ckeck_all)').prop('checked',state)
         });
-        //选择
+
         $(':checkbox:not(#check_all)').click(function () {
             if($(this).prop('checked')){
 {#                alert($(':checked').length);#}
@@ -34,24 +34,23 @@
             }
         });
 
-        //数量加
-        //为所有的 add绑定点击事件
+
         $('.add').click(function () {
 
             txt=$(this).next();
-            //数值加1，同时取消 焦点
+
             txt.val(parseFloat(txt.val())+1).blur();
 
         });
          $('.minus').click(function () {
             txt=$(this).prev();
              txt.val(parseFloat(txt.val())-1).blur()
-             //数值加1，同时取消 焦点
+
         });
 {#         $('#check_goods').click(function () {#}
 {#             c = $(this).attr('checked');#}
 {#         });#}
-        //在blur事件里ajax 提交
+
         $('.num_show').blur(function () {
             count=parseFloat($(this).val());
             kucun=parseFloat($(this).attr('kucun'));
@@ -73,27 +72,27 @@
             cart_id = $(this).parents('.cart_list_td').attr('id');
             $.get('/cart/edit'+cart_id+'_'+count+'/',function (data) {
                 if(data.count==0){
-                    //修改成功，计算总价
+
 {#                    alert('ok');#}
                     total();
                 }
                 else {
-                    //修改失败,改为原来 的值（回掉回来原来的值）
+
                     $(this).val(data.count)
                 }
             })
         })
     });
     function cart_del(cart_id) {
-            del = confirm('确定删除');
+            del = confirm('Delete Confirmed');
 {#            cart_id = $(this).parents('.cart_list_td').attr('id');#}
 {#            alert(cart_id);#}
             if(del){
                 $.get('/cart/delete'+cart_id+'/',function (data) {
 {#                    alert(data.ok);#}
                     if(data.ok==1){
-                        //删掉哪一行 商品  界面元素
-{#                        alert('删除');#}
+
+
                         $('ul').remove('#'+cart_id);
                         total();
                     }
@@ -107,22 +106,22 @@
             $('.col07').each(
                 function () {
 
-                //获取数量
+
                 count=$(this).prev().find('input').val();
-                //获取单价
+
                 price = $(this).prev().prev().text();
-                //计算小计
+
                 total0=parseFloat(count)*parseFloat(price);
-                //显示小计
+
 {#                checked = $(this).prev().prev().prev().prev().prev().prev().find('input').attr('checked')#}
 {#                if(checked == 'checked')#}
 {#                {}#}
                     $(this).text(total0.toFixed(2));
-                //加到总计上
+
                 total1 += total0;
                 total_count++;
             });
-            //显示总计
+
             $('.total').text(total1.toFixed(2));
             $('.total_count1').text(total_count);
         }
@@ -135,7 +134,7 @@
 
         });
 
-        //删掉最后一个&
+
 
         s=s.substring(0,s.length-1);
 		
@@ -168,10 +167,7 @@
 					<li><a href="/list11_1_1/">MAN</a></li>
 					<li><a href="/list12_1_1/">WOMAN</a></li>
 					<li><a href="/list13_1_1/">KIDS</a></li>
-{#					<li class="divider"></li>#}
-{#					<li><a href="#">分离的链接</a></li>#}
-{#					<li class="divider"></li>#}
-{#					<li><a href="#">另一个分离的链接</a></li>#}
+
 				</ul>
 			</li>
 		</ul>
@@ -190,7 +186,7 @@
 	<div class="total_count">  All Products<em>{{ carts|length }}</em>items</div>
 	<ul class="cart_list_th clearfix">
 		<li class="col01">Product Name</li>
-{#		<li class="col02">商品单位</li>#}
+{#		<li class="col02">Product Unit</li>#}
 		<li class="col02">Unit Price</li>
 		<li class="col03">Qty</li>
 		<li class="col04">Total Price</li>

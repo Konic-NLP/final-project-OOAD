@@ -4,9 +4,6 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
 
-
-
-
     $(document).ready(function(){
 
           $("#btn2").click(function(){
@@ -15,7 +12,6 @@
               $("#phone").removeAttr('disabled')
                $("#address").removeAttr('disabled')
 
-
   });
            $("#btn").click(function(){
     {#alert("HTML: " + $("#test").html());#}
@@ -23,19 +19,14 @@
               $("#phone").attr('disabled','disabled')
                	$("#address").attr('disabled','disabled')
 
-
   });
-
-
-
 
 
     $(function () {
         $('.col07').each(function () {
             count = $(this).prev().text();
             price = $(this).prev().prev().text();
-            $(this).html(parseFloat(count, 2) * parseFloat(price, 2) + '元')
-
+            $(this).html('$' + parseFloat(count, 2) * parseFloat(price, 2))
 
         })
 
@@ -74,12 +65,6 @@
                 </li>
 
 
-{#			<span><input type="radio" name="" checked="checked"></span>#}
-{#              Address：<span disabled="disabled" class="user_info_check" id="address">{{ user.oaddress }}</span>#}
-{#              Receiver：<span disabled="disabled" class="user_info_check" id="'receiver">{{ user.oreceiver }} </span>#}
-{#              Phone：<span disabled="disabled" class="user_info_check" id="phone">{{ user.ocontact }}</span>#}
-{#		        </dl>#}
-{#		        <a href="{% url "df_user:site" %}" class="edit_site">编辑收货地址</a>#}
         		<li class="reg_sub">
                     <input type="submit" id ='btn' value="Save changes" onclick="myFunction()">
                     <button id="btn2">change the address</button>
@@ -108,7 +93,7 @@
 	<div class="common_list_con clearfix">
 		<ul class="goods_list_th clearfix">
 			<li class="col01">Product Name</li>
-{#			<li class="col02">商品单位</li>#}
+{#			<li class="col02">Product Unit</li>#}
 			<li class="col03">Unit Price</li>
 			<li class="col04">Qty</li>
 			<li class="col05">Total Price</li>
@@ -128,7 +113,7 @@
 	</div>
 
 	<h3 class="common_title">Checkout</h3>
-{#	<h3 class="common_title">订单提交时间{{ value|time }}</h3>#}
+{#	<h3 class="common_title">Checkout Time{{ value|time }}</h3>#}
 
 	<div class="common_list_con clearfix">
 		<div class="settle_con">
@@ -156,7 +141,7 @@
 
 	<script type="text/javascript">
 		$('#order_btn').click(function() {
-		    //检查当前收货地址是否正确
+		    //Check shipping address
 		    $('.user_info_check').each(function () {
 		        text = $(this).val();
 				number = 0;
@@ -171,7 +156,7 @@
             receiver=$("#receiver").val()
             address=$("#address").val()
             contact=$("#phone").val()
-		    //获取所有id，拼接成字符串
+
             cartids = '';
             $('.goods_list_td').each(function () {
                cartids = cartids + $(this).attr('id') +','
@@ -188,9 +173,9 @@
                     'csrfmiddlewaretoken':'{{ csrf_token }}'
 		    };
 
-		    //先发请求
+
             $.post('/order/push/',data,function (data) {
-                //成功
+
 
                 if (data.ok == 1){
                     localStorage.setItem('order_finish',2);

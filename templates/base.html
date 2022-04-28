@@ -6,10 +6,9 @@
 		<div class="header">
 			<div class="welcome fl">Be prepared. Be successful. Be spirited.</div>
 			<div class="fr">
-{#                判断是否已经登录#}
+{#                check if login#}
                 {% if request.session.user_name|default:'' != '' %}
-{#                    default过滤器进行判断如果request.session.user_name不等于空字符串则用户登陆状态为true#}
-{#                    也就是说当用户为已登陆状态时则显示用户名#}
+
 
 {#                    class="login_info fl"#}
 				<div class="login_btn fl">Welcome: <em>{{ request.session.user_name }}</em>
@@ -43,7 +42,7 @@
                     $('.input_btn').click(function () {
                         q = $('.input_text').val();
                         if(q==""){
-                        alert("请输入搜索内容");
+                        alert("Please input what you want to search");
                         }
                         else{
                             location.href = '{% url "df_goods:ordinary_search" %}?q='+q+'&page=1'
