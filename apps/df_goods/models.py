@@ -30,8 +30,8 @@ class GoodsInfo(models.Model):
     gjianjie = models.CharField(max_length=200, verbose_name="short_inro")
     gkucun = models.IntegerField(verbose_name="stock", default=0)
     gcontent = HTMLField(max_length=200, verbose_name="descriptions")
-    gtype = models.ForeignKey(TypeInfo, on_delete=models.CASCADE, verbose_name="category")
-    # gadv = models.BooleanField(default=False)
+    gtype = models.ForeignKey(TypeInfo, on_delete=models.CASCADE, verbose_name="category")  # 外键关联TypeInfo表
+    # gadv = models.BooleanField(default=False) #商品是否推荐
 
     class Meta:
         verbose_name = "products"
@@ -39,3 +39,10 @@ class GoodsInfo(models.Model):
 
     def __str__(self):
         return self.gtitle
+
+
+class GoodsinfoProxy(GoodsInfo):
+    class Meta:
+        ordering=['-id']
+        proxy=True
+

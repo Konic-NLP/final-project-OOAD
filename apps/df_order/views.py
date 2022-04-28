@@ -9,6 +9,31 @@ from .models import OrderInfo, OrderDetailInfo
 from df_cart.models import CartInfo
 from df_user.models import UserInfo
 from df_user import user_decorator
+from abc import ABC,abstractmethod
+
+
+class Strategy(ABC):
+    @abstractmethod
+    def calculate(self):
+        pass
+
+class freestrategy(Strategy):
+    def calculate(self):
+        return 0
+class normalstrategy(Strategy):
+    def calculate(self):
+
+        return 10
+
+class Shippingfee:
+    strategy:Strategy
+    def __init__(self,price,strategy):
+        self.price=price
+        self.strategy=strategy
+    def calculate(self):
+        shipcost =self.strategy.calculate()
+        return shipcost
+
 
 
 @user_decorator.login
@@ -26,7 +51,14 @@ def order(request):
         total_price = total_price + float(cart.count) * float(cart.goods.gprice)
 
     total_price = float('%0.2f' % total_price)
-    trans_cost = 10  # shipping fee
+    trans_cost=0
+    if total_price>50:
+        shipping = Shippingfee(total_price,freestrategy())
+        trans_cost=shipping.calculate()
+    else:
+        shipping =Shippingfee(total_price,normalstrategy())
+        trans_cost=shipping.calculate()
+    # trans_cost = 10  # 运费
     total_trans_price = trans_cost + total_price
     context = {
         'title': '提交订单',
@@ -42,11 +74,11 @@ def order(request):
 
 
 @user_decorator.login
-@transaction.atomic()
+@transaction.atomic()  # 事务
 def order_handle(request):
-    tran_id = transaction.savepoint()
-    cart_ids = request.POST.get('cart_ids')
-    user_id = request.session['user_id']
+    tran_id = transaction.savepoint()  # 保存事务发生点
+    cart_ids = request.POST.get('cart_ids')  # 用户提交的订单购物车，此时cart_ids为字符串，例如'1,2,3,'
+    user_id = request.session['user_id']  # 获取当前用户的id
     address=request.POST.get('address')
     receiver=request.POST.get('receiver')
     phone = request.POST.get('contact')
@@ -64,12 +96,12 @@ def order_handle(request):
         order_info.oreceiver=receiver
         order_info.save()  # save order
 
-        for cart_id in cart_ids.split(','):
-            cart = CartInfo.objects.get(pk=cart_id)
-            order_detail = OrderDetailInfo()
-            order_detail.order = order_info
-            goods = cart.goods
-            if cart.count <= goods.gkucun:
+        for cart_id in cart_ids.split(','):  # 逐个对用户提交订单中的每类商品即每一个小购物车
+            cart = CartInfo.objects.get(pk=cart_id)  # 从CartInfo表中获取小购物车对象
+            order_detail = OrderDetailInfo()  # 大订单中的每一个小商品订单
+            order_detail.order = order_info  # 外键关联，小订单与大订单绑定
+            goods = cart.goods  # 具体商品
+            if cart.count <= goods.gkucun:  # 判断库存是否满足订单，如果满足，修改数据库
                 goods.gkucun = goods.gkucun - cart.count
                 goods.save()
                 order_detail.goods = goods

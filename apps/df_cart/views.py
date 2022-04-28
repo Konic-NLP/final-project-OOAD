@@ -6,11 +6,15 @@ from df_user import user_decorator
 
 
 @user_decorator.login
+## The method decorator pattern is applied here.
+## The method is wrapped by the login function to ensure that the user is logged in
+## If the user is not logged in, the user will be redirected to the login page
+## This method is used to display the shopping cart
 def user_cart(request):
     uid = request.session['user_id']
     carts = CartInfo.objects.filter(user_id=uid)
     context = {
-        'title': '购物车',
+        'title': 'Shopping Cart',
         'page_name': 1,
         'carts': carts
     }
@@ -23,6 +27,10 @@ def user_cart(request):
 
 
 @user_decorator.login
+## The method decorator pattern is applied here.
+## The method is wrapped by the login function to ensure that the user is logged in
+## If the user is not logged in, the user will be redirected to the login page
+## This method is used to add items to the shopping cart
 def add(request, gid, count):
     uid = request.session['user_id']
     gid, count = int(gid), int(count)
@@ -47,6 +55,10 @@ def add(request, gid, count):
 
 
 @user_decorator.login
+## The method decorator pattern is applied here.
+## The method is wrapped by the login function to ensure that the user is logged in
+## If the user is not logged in, the user will be redirected to the login page
+## This method is used to modify the quantity of the shopping cart
 def edit(request, cart_id, count):
     data = {}
     try:
@@ -60,6 +72,10 @@ def edit(request, cart_id, count):
 
 
 @user_decorator.login
+## The method decorator pattern is applied here.
+## The method is wrapped by the login function to ensure that the user is logged in
+## If the user is not logged in, the user will be redirected to the login page
+## This method is used to delete the items in the shopping cart
 def delete(request, cart_id):
     data = {}
     try:

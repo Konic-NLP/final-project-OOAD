@@ -2,19 +2,19 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 from df_user.models import UserInfo
-from .models import GoodsInfo, TypeInfo
+from .models import GoodsInfo, TypeInfo,GoodsinfoProxy
 from df_cart.models import CartInfo
 from df_user.models import GoodsBrowser
 
 
 def index(request):
-
+    # check the 4 new arrival product of category
     typelist = TypeInfo.objects.all()
     goodsinfo=GoodsInfo.objects.all()
 
     type=goodsinfo.order_by('-id')[:8]
-    type0 = typelist[0].goodsinfo_set.order_by('-id')[0:8]  # 按照上传顺序
-    type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:8]  # 按照点击量
+    type0 = typelist[0].goodsinfo_set.order_by('-id')[0:8]  # according to new arrival
+    type01 = typelist[0].goodsinfo_set.order_by('-gclick')[0:8]  #according to clicks
     type1 = typelist[1].goodsinfo_set.order_by('-id')[0:8]
     type11 = typelist[1].goodsinfo_set.order_by('-gclick')[0:8]
     type2 = typelist[2].goodsinfo_set.order_by('-id')[0:8]
@@ -53,10 +53,14 @@ def index(request):
 
 
 def good_list(request, tid, pindex, sort):
-
+    # tid：product type info  pindex：product page sort：how product display
     typeinfo = TypeInfo.objects.get(pk=int(tid))
+
+    # inquiry the current product category base on the primary key
     news = typeinfo.goodsinfo_set.order_by('-id')[0:2]
+
     goods_list = []
+
     cart_num, guest_cart = 0, 0
 
     try:
@@ -174,5 +178,6 @@ def ordinary_search(request):
         'cart_num': cart_num,
         'page': page,
         'paginator': paginator,
+        'query':search_keywords
     }
     return render(request, 'df_goods/ordinary_search.html', context)

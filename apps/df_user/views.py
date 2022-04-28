@@ -9,14 +9,14 @@ from . import user_decorator
 from .models import UserInfo
 from df_order.models import OrderInfo
 
-
+## This function is used to redirect the user to the resigter page.
 def register(request):
     context = {
-        'title': 'Sign up',
+        'title': 'Register',
     }
     return render(request, 'df_user/register.html', context)
 
-
+## This function is to handel the user's resigtration.
 def register_handle(request):
 
     username = request.POST.get('user_name')
@@ -28,7 +28,7 @@ def register_handle(request):
     squestion = request.POST.get('squestion')
     sanswer = request.POST.get('sanswer')
 
-    # Judging the consistency of two passwords
+    # Check if the two passwords are the same.
     if password != confirm_pwd:
         return redirect('/user/register/')
     # password encryption
@@ -36,7 +36,7 @@ def register_handle(request):
     s1.update(password.encode('utf8'))
     encrypted_pwd = s1.hexdigest()
 
-    # create object
+    # create object in the database
     UserInfo.objects.create(
         uname=username,
         upwd=encrypted_pwd,
@@ -46,7 +46,6 @@ def register_handle(request):
         uquestion=squestion,
         uanswer=sanswer,
     )
-    # sign up successfully
     context = {
         'title': 'Sign up',
         'username': username,
@@ -145,6 +144,9 @@ def info(request):  # user center
     return render(request, 'df_user/user_center_info.html', context)
 
 @user_decorator.login
+## The method decorator is applied here.
+## If the user is not logged in, the user will be redirected to the login page.
+## this function is to redirect user to the user center reset information page.
 def info_reset(request):
     user_name=request.session.get('user_name')
     user = UserInfo.objects.filter(uname=user_name)
@@ -181,7 +183,11 @@ def info_reset(request):
 
     }
     return render(request, 'df_user/user_center_info.html', context)
+
 @user_decorator.login
+## The method decorator is applied here.
+## If the user is not logged in, the user will be redirected to the login page.
+## This function is for user to check their previous orders
 def order(request, index):
     user_id = request.session['user_id']
     orders_list = OrderInfo.objects.filter(user_id=int(user_id)).order_by('-odate')
@@ -196,7 +202,7 @@ def order(request, index):
     }
     return render(request, 'df_user/user_center_order.html', context)
 
-
+## This function is to handle the reset information.
 def reset_handle(request):
     # question=request.POST.get('security_question')
     answer = request.POST.get('security_answer')
@@ -205,9 +211,7 @@ def reset_handle(request):
     uname = request.session.get('user_name')
     users = UserInfo.objects.filter(uname=uname)
 
-    # security_answer="18"
     security_answer=users[0].uanswer
-    # context={}
     if password != confirm_password:
         return redirect('/user/register/')
     if answer == security_answer:
@@ -231,21 +235,12 @@ def reset_handle(request):
         }
         return render(request, 'df_user/find_password.html',context)
 
-
+## This funtion is to model is ensure the username provided by the user exists.
 def find_password(request):
     uname = request.POST.get('user_name')
     users = UserInfo.objects.filter(uname=uname)
     print(len(users))
-    # if uname=='':
-    #     context={
-    #         'title': 'reset the password',
-    #         'error_name': 0,
-    #         'error_pwd': 0,
-    #         'blank_name': 1,
-    #         'uname':uname
-    #     }
-    #     return render(request, 'df_user/forgetPassword.html', context)
-    if len(users) == 1:  # 判断用户密码并跳转
+    if len(users) == 1:  ## If the user exists, the user will be redirected to the reset page.
 
         url = 'df_user/find_password.html'
         red = HttpResponseRedirect(url)
@@ -272,9 +267,8 @@ def find_password(request):
         }
         return render(request, 'df_user/forgetPassword.html', context)
 
-    # return render(request, 'df_user/find_password.html', context)
 
-
+## This function is to redirect the user to the reset page.
 def forget_password(request):
     uname = request.COOKIES.get('uname', '')
     context = {
@@ -287,16 +281,16 @@ def forget_password(request):
 
 
 @user_decorator.login
+## The method decorator is applied here to ensure the user is logged in.
+## This function is to redirect the user to redirect the user to the change password page in the user center.
 def site(request):
     return render(request,'df_user/user_center_site.html')
 
+## This function is to handle the change password request from the user.
 def site_handle(request):
     user = UserInfo.objects.get(id=request.session['user_id'])
     if request.method == "POST":
         pwd = request.POST.get('pwd')
-        # user.uaddress = request.POST.get('uaddress')
-        # user.uyoubian = request.POST.get('uyoubian')
-        # user.uphone = request.POST.get('uphone')
         confirm_pwd=request.POST.get('confirm_pwd')
         if pwd==confirm_pwd:
 
@@ -310,9 +304,4 @@ def site_handle(request):
         else:
             return redirect('df_user/user_center_site.html')
     return render(request, 'df_user/user_center_site.html', {'success':1})
-    # context = {
-    #     'page_name': 1,
-    #     'title': 'User Center',
-    #     'user': user,
-    # }
 
