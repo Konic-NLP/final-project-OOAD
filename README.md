@@ -49,7 +49,7 @@ pip install -Ur requirements.txt
 To run the project: 
 
 ```
-<code> python manage.py runserver </code>
+python manage.py runserver
 ```
 
 #### Citation and Credit
