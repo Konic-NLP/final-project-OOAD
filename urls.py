@@ -7,7 +7,8 @@ from apps import df_goods, df_user, df_cart, df_order
 from .settings import MEDIA_ROOT
 
 #this is a route role, the request in the templates like the form will link to a url, and the route will assign the request to specific function to process the request. 
-
+# it's a command pattern, the templates on the front end like a invoker, and the route in this file plays the role of command and delegate the request to the specific function
+#receiver to execute, the template doesn't know the request will sent to whom.
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('df_goods.urls', namespace='df_goods')),
