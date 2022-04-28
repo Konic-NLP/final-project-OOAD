@@ -43,13 +43,13 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 To intall all the packages:
 
 ```python
-<code>pip install -Ur requirements.txt</code>
+pip install -Ur requirements.txt 
 ```
 
 To run the project: 
 
 ```
-<code> python manage.py runserver</code>
+<code> python manage.py runserver </code>
 ```
 
 #### Citation and Credit
