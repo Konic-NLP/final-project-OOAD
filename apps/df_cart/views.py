@@ -5,6 +5,8 @@ from .models import *
 from df_user import user_decorator
 
 
+# edit the cart by adding , reducing and deleting 
+
 @user_decorator.login
 ## The method decorator pattern is applied here.
 ## The method is wrapped by the login function to ensure that the user is logged in
