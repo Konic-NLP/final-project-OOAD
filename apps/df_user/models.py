@@ -3,7 +3,7 @@ from django.db import models
 from datetime import datetime
 
 from df_goods.models import GoodsInfo
-
+# this defined two models, one if recording the user info, the other record the user view history
 
 class UserInfo(models.Model):
 
@@ -38,4 +38,4 @@ class GoodsBrowser(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return "{0}浏览记录{1}".format(self.user.uname, self.good.gtitle)
+        return "{0}view history{1}".format(self.user.uname, self.good.gtitle)
