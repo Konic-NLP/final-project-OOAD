@@ -24,7 +24,7 @@
 
         $(':checkbox:not(#check_all)').click(function () {
             if($(this).prop('checked')){
-{#                alert($(':checked').length);#}
+
                 if($(':checked').length+1==$(':checkbox').length){
                     $('#ckeck_all').prop('checked',true);
                 }
@@ -47,9 +47,7 @@
              txt.val(parseFloat(txt.val())-1).blur()
 
         });
-{#         $('#check_goods').click(function () {#}
-{#             c = $(this).attr('checked');#}
-{#         });#}
+
 
         $('.num_show').blur(function () {
             count=parseFloat($(this).val());
@@ -85,8 +83,7 @@
     });
     function cart_del(cart_id) {
             del = confirm('Delete Confirmed');
-{#            cart_id = $(this).parents('.cart_list_td').attr('id');#}
-{#            alert(cart_id);#}
+
             if(del){
                 $.get('/cart/delete'+cart_id+'/',function (data) {
 {#                    alert(data.ok);#}
@@ -113,9 +110,6 @@
 
                 total0=parseFloat(count)*parseFloat(price);
 
-{#                checked = $(this).prev().prev().prev().prev().prev().prev().find('input').attr('checked')#}
-{#                if(checked == 'checked')#}
-{#                {}#}
                     $(this).text(total0.toFixed(2));
 
                 total1 += total0;
@@ -147,6 +141,7 @@
 
 {% block center_body %}
 
+    {#bootstrap navigation bar#}
     <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 	<div class="navbar-header">

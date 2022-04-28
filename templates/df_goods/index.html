@@ -11,7 +11,7 @@
 
 {% block center_body %}
 
-
+    {#bootstrap navigation bar#}
     <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 	<div class="navbar-header">
@@ -43,10 +43,11 @@
 
 		<div class="slide fl">
 			<ul class="slide_pics">
-				<li><img src="/static/images/slide.jpg" alt="幻灯片"></li>
-				<li><img src="/static/images/slide02.jpg" alt="幻灯片"></li>
-				<li><img src="/static/images/slide03.jpg" alt="幻灯片"></li>
-				<li><img src="/static/images/slide04.jpg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide.jpg" alt="slide"></li>
+				<li><img src="/static/images/slide02.jpg" alt="slide"></li>
+				<li><img src="/static/images/slide03.jpg" alt="slide"></li>
+				<li><img src="/static/images/slide04.jpg" alt="slide"></li>
+                <li><img src="/static/images/slide05.jpg" alt="slide"></li>
 			</ul>
 			<div class="prev"></div>
 			<div class="next"></div>
@@ -63,7 +64,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner01.jpg"></div>#}
 			<ul class="goods_list fl">
 
                 {% for goods in type0 %}
@@ -84,7 +84,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type100 %}
                 <li>
@@ -105,7 +104,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type41 %}
                 <li>
@@ -127,7 +125,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type51 %}
                 <li>
@@ -149,7 +146,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type21 %}
                 <li>
@@ -170,7 +166,6 @@
 		</div>
 
 		<div class="goods_con clearfix">
-{#			<div class="goods_banner fl"><img src="/static/images/banner02.jpg"></div>#}
 			<ul class="goods_list fl">
                 {% for goods in type31 %}
                 <li>

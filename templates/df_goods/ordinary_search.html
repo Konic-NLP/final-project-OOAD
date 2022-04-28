@@ -13,6 +13,7 @@
 
 {% block center_body %}
 
+    {#bootstrap navigation bar#}
     <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 	<div class="navbar-header">
@@ -71,7 +72,7 @@
             {% endfor %}
         </ul>
         <div class="pagenation">
-            {#check if the first page#}
+            {#check if it is the first page#}
             {% if page.has_previous %}
                 <a href="{% url "df_goods:ordinary_search" %}?q={{ query }}&amp;page={{ page.previous_page_number }}">< Previous page</a>
             {% endif %}
