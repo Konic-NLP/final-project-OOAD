@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import reverse
 
 
-# go to login page if not login
+# go to login page if not login, this is decorator to wrap up the function
 def login(func):
     def login_fun(request, *args, **kwargs):
         if 'user_id' in request.session:
