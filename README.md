@@ -35,6 +35,7 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
    Namely, in our system, we force the user to log in if they want to add items to or edit the shopping cart. To achieve this, a login function wrap the functions written in the view.py of the cart folder, which handles the add item request, edit request, visit cart request, and delete cart request. Before running those functions, the system will call the decorator function login first, judging if the user is in login status, and then it will call the function wrapped in the decorator. 
 
 3. **Command**
+
    The command pattern is used in our project. The template receives the request from the users and it plays the role of the invoker since the template decouples from the view,  who is in charge of processing the request and response to the user. The URL route plays the role of command, which get the request and send it to the suitable object(function) in the file to process the request.
 
 ### Install and Run ###
