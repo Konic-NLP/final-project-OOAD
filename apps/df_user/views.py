@@ -52,6 +52,7 @@ def register_handle(request):
     }
     return render(request, 'df_user/login.html', context)
 
+# verfiy whether the username exists
 
 def register_exist(request):
     username = request.GET.get('uname')
@@ -118,6 +119,7 @@ def logout(request):  # logout
     return redirect(reverse("df_goods:index"))
 
 
+# view history
 @user_decorator.login
 def info(request):  # user center
     username = request.session.get('user_name')
@@ -143,10 +145,13 @@ def info(request):  # user center
     }
     return render(request, 'df_user/user_center_info.html', context)
 
-@user_decorator.login
+
 ## The method decorator is applied here.
 ## If the user is not logged in, the user will be redirected to the login page.
 ## this function is to redirect user to the user center reset information page.
+
+
+@user_decorator.login
 def info_reset(request):
     user_name=request.session.get('user_name')
     user = UserInfo.objects.filter(uname=user_name)
@@ -184,10 +189,11 @@ def info_reset(request):
     }
     return render(request, 'df_user/user_center_info.html', context)
 
-@user_decorator.login
+
 ## The method decorator is applied here.
 ## If the user is not logged in, the user will be redirected to the login page.
 ## This function is for user to check their previous orders
+@user_decorator.login
 def order(request, index):
     user_id = request.session['user_id']
     orders_list = OrderInfo.objects.filter(user_id=int(user_id)).order_by('-odate')
@@ -280,9 +286,10 @@ def forget_password(request):
     return render(request, 'df_user/forgetPassword.html', context)
 
 
-@user_decorator.login
+
 ## The method decorator is applied here to ensure the user is logged in.
 ## This function is to redirect the user to redirect the user to the change password page in the user center.
+@user_decorator.login
 def site(request):
     return render(request,'df_user/user_center_site.html')
 
