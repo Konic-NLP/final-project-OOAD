@@ -1,3 +1,4 @@
+# this file defined some global setting and config for the projects
 import os,sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'df_user',
     'df_order',
 
-    'tinymce',  # 使用富文本编辑框要在settings文件中安装
+    'tinymce',  # the rich text editor
 ]
 
 MIDDLEWARE = [
