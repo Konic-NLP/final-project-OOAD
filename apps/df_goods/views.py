@@ -6,7 +6,7 @@ from .models import GoodsInfo, TypeInfo,GoodsinfoProxy
 from df_cart.models import CartInfo
 from df_user.models import GoodsBrowser
 
-
+# the products to display on the main page
 def index(request):
     # check the 4 new arrival product of category
     typelist = TypeInfo.objects.all()
@@ -50,6 +50,7 @@ def index(request):
     }
 
     return render(request, 'df_goods/index.html', context)
+
 
 
 def good_list(request, tid, pindex, sort):
@@ -139,7 +140,7 @@ def cart_count(request):
     else:
         return 0
 
-
+# the search function
 def ordinary_search(request):
 
     from django.db.models import Q
@@ -167,7 +168,7 @@ def ordinary_search(request):
         # search result is empty, return some recommendation
         search_status = 0
         goods_list = GoodsInfo.objects.all().order_by("gclick")[:4]
-
+       #paginator function to split the page when the products are too many
     paginator = Paginator(goods_list, 4)
     page = paginator.page(int(pindex))
 
