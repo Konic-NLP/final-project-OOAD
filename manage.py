@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# this is a file for migrate ORM 
 import os
 import sys
 
