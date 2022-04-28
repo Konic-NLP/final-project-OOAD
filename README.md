@@ -40,6 +40,15 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 
 ### Install and Run ###
 
+first, please create a virtual enviorment
+
+` pip install virtualenv`
+`virtualenv the name for the environment, e.g   virtualenv venv`
+
+activate the virtual enviroment
+
+`source activate venv`
+
 To intall all the packages:
 
 ```python
