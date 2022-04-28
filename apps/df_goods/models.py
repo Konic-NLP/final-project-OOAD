@@ -3,7 +3,7 @@ from datetime import datetime
 from django.db import models
 from tinymce.models import HTMLField
 
-
+# record the information of the category for each products
 
 class TypeInfo(models.Model):
     # Product type
@@ -16,7 +16,7 @@ class TypeInfo(models.Model):
 
     def __str__(self):
         return self.ttitle
-
+#  
 
 class GoodsInfo(models.Model):
     # product details
@@ -39,7 +39,8 @@ class GoodsInfo(models.Model):
 
     def __str__(self):
         return self.gtitle
-
+#this is a Proxy pattern, which  is a proxy of the goodsinfo, the proxy change the order way of the original models while not impact the original models,  the client can extract  model
+# can extract information from goosinfo via proxy while cannot change the goodsinfo
 
 class GoodsinfoProxy(GoodsInfo):
     class Meta:
