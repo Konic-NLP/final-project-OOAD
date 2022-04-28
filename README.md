@@ -1,88 +1,56 @@
-## DailyFresh
+## Buff Shop ##
 
-**天天生鲜**：小型电商购物网站，基于<code>Python3.x</code>和<code>Django2.x</code>
+### General
 
-项目尽量使用Django内部提供的API，后台管理为Django自带的管理系统django-admin。适合Django的小型实战项目。
+This repo contains our final project for the CSCI5448.
 
-## 功能简介：
-
-- 商品浏览：商品的图片，售价，种类，简介以及库存等信息。
-- 全文检索：支持对商品种类以及商品名称，简介的检索。
-- 登录注册：用户的登录与注册。
-- 用户中心：支持用户个人信息，收货地址等信息的更新，商品加入购物车，订单生成。
-- 商品下单：在支付接口和企业资质的支持下可完成商品的下单功能，按照原子事务处理，下单异常则终止此次下单过程。
-- 后台管理：支持后台管理功能，商品及用户信息的增加，更新与删除，可自定制样式与功能，日志，以及权限的管理和分配。
+Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 
 
-## 在线样例：
 
-### 在线地址
-
-[http://39.108.176.210](http://39.108.176.210)
-
-账号：weilanhanf
-
-密码：weilanhanf
-
-### 管理人员入口
-
-[http://39.108.176.210/admin](http://39.108.176.210/admin)
-
-账号：root
-
-密码：rootroot
+### Documentations
 
 
-## 预览：
-### 首页
-![index](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/index.png)
+**Demonstration Video:**
 
-### 登录
-![login](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/login.png)
+**Final Project Report:**
 
-### 商品详情
-![goods](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/goods.png)
+**Final Class Diagram:** 
 
-### 购物车
-![cart](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/cart.png)
+**UML for Project5:** [link]
 
-## 安装：
+**UML for Project6:** [link](https://github.com/ravenouse/OOAD-Final-Project/blob/main/Shopping%20Class%20Diagram%20(Project6).pdf)
 
-### 依赖包安装
+**Documentation of UML changes:** [link](https://docs.google.com/document/d/19sNARZsjykJEfHG_ropwVkZsUiufORlpjCKaFUAuUww/edit?usp=sharing)
 
-下载文件进入项目目录之后，使用pip安装依赖包
+### OO Patterns
 
+1. **MTV**
+
+   The **MTV** (a variant of MVC, means Model, Template and Views) pattern built-in Django really brings the whole system loose coupling and high cohesion. It split different functions into different modules. The models in the MTV pattern, which are defined in the models.py files, handle the object-relational mapping between the system and the database.It offer the API for us to execute query and extract or store the data. The templates in the MTV pattern are made up of multiple HTML for different pages, which plays the role of view in MVC to display the UI to the users. They contain the surface static contents, including text and pictures of the web pages, and they also contain functions written in javascript, which can fulfill the basic interactions between the user and the system. The views in the MTV pattern mediate between the models and the templates, like the controller in MVC, passing front-end requests to the model and passing back-end information to the templates (or to the user). 
+   
+2. **Decorator**
+   
+   The Decorator pattern in Django framework is functional-based:  the decorator function wraps up other functions. In our project, 
+   Namely, in our system, we force the user to log in if they want to add items to or edit the shopping cart. To achieve this, a login function wrap the functions written in the view.py of the cart folder, which handles the add item request, edit request, visit cart request, and delete cart request. Before running those functions, the system will call the decorator function login first, judging if the user is in login status, and then it will call the function wrapped in the decorator. 
+
+3. **Command**
+   The command pattern is used in our project. The template receives the request from the users and it plays the role of the invoker since the template decouples from the view,  who is in charge of processing the request and response to the user. The URL route plays the role of command, which get the request and send it to the suitable object(function) in the file to process the request.
+
+### Install and Run ###
+
+To intall all the packages:
+
+```python
 <code>pip install -Ur requirements.txt</code>
+```
 
-### 数据库配置
+To run the project: 
 
-数据库默认使用<code>Django</code>项目生成时自动创建的小型数据库<code>sqlite</code>
+```
+<code> python manage.py runserver</code>
+```
 
-也可自行配置连接使用MySQL
+#### Citation and Credit
 
-### 创建超级用户
-
-终端下执行:
-
-<code>./python manage.py createsuperuser</code>
-
-然后输入相应的超级用户名以及密码，邮箱即可。
-
-### 开始运行
-
-终端下执行:
-
-<code>./python manage.py runserver</code>
-
-浏览器打开: <code>http://127.0.0.1</code> 即可进入普通用户入口
-
-浏览器打开: <code>http://127.0.0.1/admin</code> 即可进入超级用户入口
-
-
-## 感谢：
-
-感谢您的star
-
-### 联系：
-
-如需联系请前往博客园留言 <a href="https://www.cnblogs.com/welan/p/9231530.html" target="_blank">蔚蓝的蓝</a>
+This project is adapted by and inspired from a [daily fresh project](https://github.com/Konic-NLP/daily_fresh_demo).
