@@ -13,9 +13,9 @@ Group memebers: Sijia Ge, Xiaosong Wang, Zhiyong Wang
 
 **Demonstration Video:**
 
-**Final Project Report:**
+**Final Project Report:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project%207.pdf)
 
-**Final Class Diagram:** 
+**Final Class Diagram:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project%207.pdf)
 
 **UML for Project5:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project5%20UML.pdf)
 
