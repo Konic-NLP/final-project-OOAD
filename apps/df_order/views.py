@@ -35,7 +35,7 @@ class Shippingfee:
         return shipcost
 
 
-
+# calculate the total cost and place the order
 @user_decorator.login
 def order(request):
     uid = request.session['user_id']
@@ -58,10 +58,10 @@ def order(request):
     else:
         shipping =Shippingfee(total_price,normalstrategy())
         trans_cost=shipping.calculate()
-    # trans_cost = 10  # 运费
+    # trans_cost = 10  # transcorst
     total_trans_price = trans_cost + total_price
     context = {
-        'title': '提交订单',
+        'title': 'submit the order',
         'page_name': 1,
         'user': receiver,
         'carts': carts,
@@ -74,11 +74,11 @@ def order(request):
 
 
 @user_decorator.login
-@transaction.atomic()  # 事务
+@transaction.atomic()  # transaction
 def order_handle(request):
-    tran_id = transaction.savepoint()  # 保存事务发生点
-    cart_ids = request.POST.get('cart_ids')  # 用户提交的订单购物车，此时cart_ids为字符串，例如'1,2,3,'
-    user_id = request.session['user_id']  # 获取当前用户的id
+    tran_id = transaction.savepoint()  
+    cart_ids = request.POST.get('cart_ids')  
+    user_id = request.session['user_id'] 
     address=request.POST.get('address')
     receiver=request.POST.get('receiver')
     phone = request.POST.get('contact')
@@ -96,12 +96,12 @@ def order_handle(request):
         order_info.oreceiver=receiver
         order_info.save()  # save order
 
-        for cart_id in cart_ids.split(','):  # 逐个对用户提交订单中的每类商品即每一个小购物车
-            cart = CartInfo.objects.get(pk=cart_id)  # 从CartInfo表中获取小购物车对象
-            order_detail = OrderDetailInfo()  # 大订单中的每一个小商品订单
-            order_detail.order = order_info  # 外键关联，小订单与大订单绑定
-            goods = cart.goods  # 具体商品
-            if cart.count <= goods.gkucun:  # 判断库存是否满足订单，如果满足，修改数据库
+        for cart_id in cart_ids.split(','):  # chekc the item one by one 
+            cart = CartInfo.objects.get(pk=cart_id)  #
+            order_detail = OrderDetailInfo()  #get the each item from the verall order
+            order_detail.order = order_info  #
+            goods = cart.goods  
+            if cart.count <= goods.gkucun:  # change the stock 
                 goods.gkucun = goods.gkucun - cart.count
                 goods.save()
                 order_detail.goods = goods
