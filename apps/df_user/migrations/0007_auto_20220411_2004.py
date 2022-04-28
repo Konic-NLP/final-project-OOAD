@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userinfo',
             name='usanswer',
-            field=models.CharField(default='', max_length=40, verbose_name='密保答案'),
+            field=models.CharField(default='', max_length=40, verbose_name='Security question answer'),
         ),
         migrations.AddField(
             model_name='userinfo',
             name='usquestion',
-            field=models.CharField(default='', max_length=40, verbose_name='密保问题'),
+            field=models.CharField(default='', max_length=40, verbose_name='Security question'),
         ),
     ]

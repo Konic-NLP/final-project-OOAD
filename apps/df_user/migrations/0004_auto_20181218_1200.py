@@ -13,55 +13,55 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='goodsbrowser',
-            options={'verbose_name': '用户浏览记录', 'verbose_name_plural': '用户浏览记录'},
+            options={'verbose_name': 'User browsing history', 'verbose_name_plural': 'User browsing history'},
         ),
         migrations.AlterModelOptions(
             name='userinfo',
-            options={'verbose_name': '用户信息', 'verbose_name_plural': '用户信息'},
+            options={'verbose_name': 'User info', 'verbose_name_plural': 'User info'},
         ),
         migrations.AlterField(
             model_name='goodsbrowser',
             name='good',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_goods.GoodsInfo', verbose_name='商品ID'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_goods.GoodsInfo', verbose_name='Product ID'),
         ),
         migrations.AlterField(
             model_name='goodsbrowser',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_user.UserInfo', verbose_name='用户ID'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_user.UserInfo', verbose_name='Product ID'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uaddress',
-            field=models.CharField(default='', max_length=100, verbose_name='地址'),
+            field=models.CharField(default='', max_length=100, verbose_name='Address'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uemail',
-            field=models.EmailField(max_length=254, verbose_name='邮箱'),
+            field=models.EmailField(max_length=254, verbose_name='Address'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uname',
-            field=models.CharField(max_length=20, verbose_name='用户名'),
+            field=models.CharField(max_length=20, verbose_name='Username'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uphone',
-            field=models.CharField(default='', max_length=11, verbose_name='手机号'),
+            field=models.CharField(default='', max_length=11, verbose_name='Phone'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='upwd',
-            field=models.CharField(max_length=40, verbose_name='用户密码'),
+            field=models.CharField(max_length=40, verbose_name='Password'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='ushou',
-            field=models.CharField(default='', max_length=20, verbose_name='收货地址'),
+            field=models.CharField(default='', max_length=20, verbose_name='Shipping address'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uyoubian',
-            field=models.CharField(default='', max_length=6, verbose_name='邮编'),
+            field=models.CharField(default='', max_length=6, verbose_name='Postal code'),
         ),
     ]

@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'df_user',
     'df_order',
 
-    'tinymce',  # 使用富文本编辑框要在settings文件中安装
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +47,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',  # 将media_url上传文件路径注册到模板中
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -84,11 +84,11 @@ USE_I18N = True
 
 USE_L10N = True
 
-LANGUAGE_CODE = 'en-us'  # 后台管理改为中文
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Denver'  # 时区改为上海
+TIME_ZONE = 'America/Denver'
 
-USE_TZ = False  # 数据库取为国际时间
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 
@@ -98,10 +98,10 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-# 设置上传文件的路径
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # 指定根目录
 
-# 富文本编辑框的使用配置
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'advanced',
     'width': 600,

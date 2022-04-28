@@ -16,7 +16,7 @@ def user_cart(request):
     }
     if request.is_ajax():
         count = CartInfo.objects.filter(user_id=request.session['user_id']).count()
-        # 求当前用户购买了几件商品
+        # How many items the current user purchased
         return JsonResponse({'count': count})
     else:
         return render(request, 'df_cart/cart.html', context)
@@ -26,7 +26,7 @@ def user_cart(request):
 def add(request, gid, count):
     uid = request.session['user_id']
     gid, count = int(gid), int(count)
-    # 查询购物车中是否已经有此商品，如果有则数量增加，如果没有则新增
+    # Check if there is already this product in the shopping cart, if so, increase the quantity, if not, add it
     carts = CartInfo.objects.filter(user_id=uid, goods_id=gid)
     if len(carts) >= 1:
         cart = carts[0]
@@ -37,10 +37,10 @@ def add(request, gid, count):
         cart.goods_id = gid
         cart.count = count
     cart.save()
-    # 如果是ajax提交则直接返回json，否则转向购物车
+
     if request.is_ajax():
         count = CartInfo.objects.filter(user_id=request.session['user_id']).count()
-        # 求当前用户购买了几件商品
+
         return JsonResponse({'count': count})
     else:
         return redirect(reverse("df_cart:cart"))

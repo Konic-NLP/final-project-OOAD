@@ -10,8 +10,8 @@ def load_data_set(user):
     """
     get_user_order
     :param user:
-    :return: 返回用户的订单列表，列表中为商品的主键id
-     for example [['1', '2'], ['2', '34']]：表示购买进行过两次采购，一次购买1和2号商品，二次购买2号和34号商品
+    :return:
+     for example [['1', '2'], ['2', '34']]：
     """
 
     user_order_list = []

@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import TypeInfo, GoodsInfo
 
 
-# 注册模型类  普通方法
+
 class TypeInfoAdmin(admin.ModelAdmin):
     list_display = ['id', 'ttitle']
     list_per_page = 10

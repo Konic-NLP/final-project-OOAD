@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='goodsbrowser',
             name='browser_time',
-            field=models.DateTimeField(default=datetime.datetime.now, verbose_name='浏览时间'),
+            field=models.DateTimeField(default=datetime.datetime.now, verbose_name='Browsing time'),
         ),
     ]

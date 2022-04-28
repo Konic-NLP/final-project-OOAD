@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userinfo',
             name='usecurity_answer',
-            field=models.CharField(default='', max_length=30, verbose_name='安全答案'),
+            field=models.CharField(default='', max_length=30, verbose_name='Safe answer'),
         ),
     ]

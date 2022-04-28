@@ -73,19 +73,19 @@
         <div class="pagenation">
 
             {% if page.has_previous %}
-                <a href="{% url "df_user:ordinary_search" %}?q={{ query }}&amp;page={{ page.previous_page_number }}">上一页</a>
+                <a href="{% url "df_goods:ordinary_search" %}?q={{ query }}&amp;page={{ page.previous_page_number }}">上一页</a>
             {% endif %}
 
             {% for pindex in paginator.page_range %}
                 {% if pindex == page.number %}
                     <a href="#" class="active">{{ pindex }}</a>
                 {% else %}
-                    <a href="{% url "df_user:ordinary_search" %}?q={{ query }}&amp;page={{ pindex }}">{{ pindex }}</a>
+                    <a href="{% url "df_goods:ordinary_search" %}?q={{ query }}&amp;page={{ pindex }}">{{ pindex }}</a>
                 {% endif %}
             {% endfor %}
 
             {% if page.has_next %}
-                <a href="{% url "df_user:ordinary_search" %}?q={{ query }}&amp;page={{ page.next_page_number }}">Next Page></a>
+                <a href="{% url "df_goods:ordinary_search" %}?q={{ query }}&amp;page={{ page.next_page_number }}">Next Page></a>
             {% endif %}
         </div>
     </div>

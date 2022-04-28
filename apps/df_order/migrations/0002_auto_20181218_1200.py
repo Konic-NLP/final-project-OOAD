@@ -13,60 +13,60 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='orderdetailinfo',
-            options={'verbose_name': '订单详情', 'verbose_name_plural': '订单详情'},
+            options={'verbose_name': 'order detail', 'verbose_name_plural': 'order detail'},
         ),
         migrations.AlterModelOptions(
             name='orderinfo',
-            options={'verbose_name': '订单', 'verbose_name_plural': '订单'},
+            options={'verbose_name': 'order', 'verbose_name_plural': 'order'},
         ),
         migrations.AlterField(
             model_name='orderdetailinfo',
             name='count',
-            field=models.IntegerField(verbose_name='商品数'),
+            field=models.IntegerField(verbose_name='quantity'),
         ),
         migrations.AlterField(
             model_name='orderdetailinfo',
             name='goods',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_goods.GoodsInfo', verbose_name='商品'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_goods.GoodsInfo', verbose_name='products'),
         ),
         migrations.AlterField(
             model_name='orderdetailinfo',
             name='order',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_order.OrderInfo', verbose_name='订单'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_order.OrderInfo', verbose_name='order'),
         ),
         migrations.AlterField(
             model_name='orderdetailinfo',
             name='price',
-            field=models.DecimalField(decimal_places=2, max_digits=6, verbose_name='商品价格'),
+            field=models.DecimalField(decimal_places=2, max_digits=6, verbose_name='product price'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='oIsPay',
-            field=models.BooleanField(default=False, verbose_name='是否支付'),
+            field=models.BooleanField(default=False, verbose_name='payment status'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='oaddress',
-            field=models.CharField(max_length=150, verbose_name='订单地址'),
+            field=models.CharField(max_length=150, verbose_name='order address'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='odate',
-            field=models.DateTimeField(auto_now=True, verbose_name='时间'),
+            field=models.DateTimeField(auto_now=True, verbose_name='time'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='oid',
-            field=models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='大订单号'),
+            field=models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='order number'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='ototal',
-            field=models.DecimalField(decimal_places=2, max_digits=8, verbose_name='总价'),
+            field=models.DecimalField(decimal_places=2, max_digits=8, verbose_name='total'),
         ),
         migrations.AlterField(
             model_name='orderinfo',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_user.UserInfo', verbose_name='订单用户'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_user.UserInfo', verbose_name='order user'),
         ),
     ]

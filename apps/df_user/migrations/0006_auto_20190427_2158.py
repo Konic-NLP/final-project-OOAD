@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='userinfo',
             name='uemail',
-            field=models.EmailField(max_length=254,  verbose_name='邮箱'),
+            field=models.EmailField(max_length=254,  verbose_name='Eamil'),
         ),
         migrations.AlterField(
             model_name='userinfo',
             name='uname',
-            field=models.CharField(max_length=20, unique=True, verbose_name='用户名'),
+            field=models.CharField(max_length=20, unique=True, verbose_name='Username'),
         ),
     ]
