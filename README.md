@@ -17,7 +17,7 @@ Based on `python 3.6`  and `Django 2.0`
 
 **Final Project Report:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project%207.pdf)
 
-**Final Class Diagram:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project%207.pdf)
+**Final Class Diagram:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project7%20UML.pdf)
 
 **UML for Project5:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project5%20UML.pdf)
 
