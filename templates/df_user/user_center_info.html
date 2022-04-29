@@ -1,7 +1,17 @@
-<!--the page for the personal info change-->
 {% extends 'base.html' %}
 
 {% block center_body %}
+
+    <script type="text/javascript">
+    if({{ success }}==1){
+
+
+        alert("modify successfully")
+    }
+
+
+    </script>
+
 
 
 	<div class="main_con clearfix">
@@ -16,14 +26,14 @@
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
 				<h3 class="common_title2">Basic Information</h3>
-                    <form action="{}" id='reg_form' method="post">
+                    <form action="{% url "df_user:info_reset" %}" id='reg_form' method="post">
                     {% csrf_token %}
 
 						<ul class="user_info_list">
 							<li><span>username：</span>{{ user_name }}</li>
 
                             <li><span>full name:</span>
-                                <input type="text" name="fullname" class="contact" value="{{ user_full_name}}" id="email">
+                                <input type="text" name="fullname" class="contact" value="{{ user_full_Name}}" id="email">
                             </li>
 
                             <li><span>email:</span>
