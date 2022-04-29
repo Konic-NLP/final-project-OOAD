@@ -42,7 +42,7 @@ Based on `python 3.6`  and `Django 2.0`
    
 4. **Proxy**
 
-   There is a proxy pattern implemented by the class meta property in the django framework. The client can access to the goodinfo tables by the proxy tabels while cannot change the data in the goodsinfo(like insert,delete). And the order method in goodsinfoproxy can be ordered by one fied without impacting the order of goodsinfo
+  proxy pattern implemented by the class meta property in the django framework. The client can access to the goodinfo tables by the proxy tabels while cannot change the data in the goodsinfo(like insert,delete). And the order method in goodsinfoproxy can be ordered by one fied without impacting the order of goodsinfo
 
 ### Install and Run ###
 
