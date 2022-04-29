@@ -39,6 +39,10 @@ Based on `python 3.6`  and `Django 2.0`
 3. **Command**
 
    The command pattern is used in our project. The template receives the request from the users and it plays the role of the invoker since the template decouples from the view,  who is in charge of processing the request and response to the user. The URL route plays the role of command, which get the request and send it to the suitable object(function) in the file to process the request.
+   
+4. **Proxy**
+
+   There is a proxy pattern implemented by the class meta property in the django framework. The client can access to the goodinfo tables by the proxy tabels while cannot change the data in the goodsinfo(like insert,delete). And the order method in goodsinfoproxy can be ordered by one fied without impacting the order of goodsinfo
 
 ### Install and Run ###
 
