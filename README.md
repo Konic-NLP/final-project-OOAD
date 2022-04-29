@@ -13,7 +13,7 @@ Based on `python 3.6`  and `Django 2.0`
 ### Documentations
 
 
-**Demonstration Video:** [link](https://drive.google.com/file/d/1IQkZ31090wpGeQN7Yd5HbwO8uaCzMjkN/view?usp=sharing)
+**Demonstration Video:** [link](https://drive.google.com/file/d/1ye77Qocw_qQ2avx6V66eVjA9k1hriTxF/view?usp=sharing)
 
 **Final Project Report:** [link](https://github.com/Konic-NLP/final-project-OOAD/blob/version_4.27/Project%207.pdf)
 
