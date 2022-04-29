@@ -35,13 +35,16 @@ class Shippingfee:
         return shipcost
 
 
-# calculate the total cost and place the order
+
 @user_decorator.login
 def order(request):
     uid = request.session['user_id']
     # user = UserInfo.objects.get(id=uid)
     latest=OrderInfo.objects.filter(user_id=uid)
-    receiver=latest.order_by('-oid')[0]
+    if len(latest)==0:
+        receiver=UserInfo.objects.get(id=uid)
+    else:
+        receiver=latest.order_by('-oid')[0]
     cart_ids = request.GET.getlist('cart_id')
     carts = []
     total_price = 0
@@ -58,10 +61,10 @@ def order(request):
     else:
         shipping =Shippingfee(total_price,normalstrategy())
         trans_cost=shipping.calculate()
-    # trans_cost = 10  # transcorst
+    # trans_cost = 10
     total_trans_price = trans_cost + total_price
     context = {
-        'title': 'submit the order',
+        'title': 'submit order',
         'page_name': 1,
         'user': receiver,
         'carts': carts,
@@ -74,11 +77,11 @@ def order(request):
 
 
 @user_decorator.login
-@transaction.atomic()  # transaction
+@transaction.atomic()
 def order_handle(request):
-    tran_id = transaction.savepoint()  
-    cart_ids = request.POST.get('cart_ids')  
-    user_id = request.session['user_id'] 
+    tran_id = transaction.savepoint()
+    cart_ids = request.POST.get('cart_ids')
+    user_id = request.session['user_id']
     address=request.POST.get('address')
     receiver=request.POST.get('receiver')
     phone = request.POST.get('contact')
@@ -96,12 +99,12 @@ def order_handle(request):
         order_info.oreceiver=receiver
         order_info.save()  # save order
 
-        for cart_id in cart_ids.split(','):  # chekc the item one by one 
-            cart = CartInfo.objects.get(pk=cart_id)  #
-            order_detail = OrderDetailInfo()  #get the each item from the verall order
-            order_detail.order = order_info  #
+        for cart_id in cart_ids.split(','):
+            cart = CartInfo.objects.get(pk=cart_id)
+            order_detail = OrderDetailInfo()
+            order_detail.order = order_info
             goods = cart.goods  
-            if cart.count <= goods.gkucun:  # change the stock 
+            if cart.count <= goods.gkucun:
                 goods.gkucun = goods.gkucun - cart.count
                 goods.save()
                 order_detail.goods = goods
