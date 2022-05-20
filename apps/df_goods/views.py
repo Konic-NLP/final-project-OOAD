@@ -146,7 +146,7 @@ def ordinary_search(request):
     from django.db.models import Q
 
     search_keywords = request.GET.get('q', '')
-    pindex = request.GET.get('pindex', 1)
+    pindex = request.GET.get('page', 1)
     search_status = 1
     cart_num, guest_cart = 0, 0
 
